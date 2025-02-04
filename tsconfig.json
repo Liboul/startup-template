@@ -8,6 +8,9 @@
     },
     {
       "path": "./packages/example-lib"
+    },
+    {
+      "path": "./packages/example-app"
     }
   ]
 }
