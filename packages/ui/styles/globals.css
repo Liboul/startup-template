@@ -2,6 +2,9 @@
 
 @plugin 'tailwindcss-animate';
 
+/* Tailwind purges the CSS, so we specify the source to let it know about the css used by the UI components */
+@source '..';
+
 @custom-variant dark (&:is(.dark *));
 
 @theme {

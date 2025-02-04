@@ -1,19 +1,25 @@
 {
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "./tsconfig.lib.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ],
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": ".",
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "paths": {
       "@/*": ["./*"]
-    }
-  }
+    },
+    "types": ["jest", "node"],
+    "outDir": "out-tsc/ui",
+    "rootDir": "."
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": [
+    "out-tsc",
+    "dist",
+    "node_modules",
+    "jest.config.ts",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "eslint.config.js",
+    "eslint.config.cjs",
+    "eslint.config.mjs"
+  ]
 }

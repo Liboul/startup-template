@@ -1,4 +1,4 @@
-import './globals.css';
+import '@startup-template/ui/styles/globals.css';
 
 export const metadata = {
   title: 'Welcome to example-app',
