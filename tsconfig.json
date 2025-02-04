@@ -11,6 +11,9 @@
     },
     {
       "path": "./packages/example-app"
+    },
+    {
+      "path": "./packages/ui"
     }
   ]
 }
