@@ -1,0 +1,16 @@
+{
+  "name": "notebook",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/notebook",
+  "projectType": "library",
+  "targets": {
+    "index": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx tsx packages/notebook/index.ts",
+        "parallel": false
+      }
+    }
+  },
+  "tags": []
+}
