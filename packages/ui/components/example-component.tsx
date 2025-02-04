@@ -1,4 +1,4 @@
-export function Ui() {
+export function ExampleComponent() {
   return (
     <div>
       <h1>Welcome to Ui!</h1>
@@ -6,4 +6,4 @@ export function Ui() {
   );
 }
 
-export default Ui;
+export default ExampleComponent;
