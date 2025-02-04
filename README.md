@@ -110,3 +110,5 @@ And join the Nx community:
 
 # Dev setup
 
+- Create .env at the root
+- Download docker (docker desktop for mac)
