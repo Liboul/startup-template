@@ -4,10 +4,10 @@ import { signinGoogle } from '@/auth/client';
 import { Button } from '@startup-template/ui/components/button';
 import { type SVGProps } from 'react';
 
-export function GoogleLogin() {
+export function GoogleLogin({ callbackURL }: { callbackURL?: string }) {
   return (
     <Button
-      onClick={signinGoogle}
+      onClick={() => signinGoogle(callbackURL)}
       className="flex h-12 w-full items-center justify-center gap-2"
       variant="outline"
     >

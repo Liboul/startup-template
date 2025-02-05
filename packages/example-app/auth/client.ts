@@ -6,19 +6,19 @@ export const authClient = createAuthClient({
   plugins: [organizationClient(), magicLinkClient()],
 });
 
-const callbackURL = '/dashboard';
+const defaultCallbackURL = '/account/dashboard';
 
-export const signinGoogle = async () => {
+export const signinGoogle = async (callbackURL?: string) => {
   const data = await authClient.signIn.social({
     provider: 'google',
-    callbackURL,
+    callbackURL: callbackURL || defaultCallbackURL,
   });
   return data;
 };
 
-export const signinMagicLink = async (email: string) => {
+export const signinMagicLink = async (email: string, callbackURL?: string) => {
   return await authClient.signIn.magicLink({
     email,
-    callbackURL,
+    callbackURL: callbackURL || defaultCallbackURL,
   });
 };

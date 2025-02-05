@@ -6,17 +6,18 @@ import {
   CardHeader,
 } from '@startup-template/ui/components/card';
 import { SeparatorWithContent } from '@startup-template/ui/components/separator-with-content';
-import { CommandIcon } from 'lucide-react';
+import { Logo } from '@/components/logo';
 import { GoogleLogin } from './google-login';
 import { MagicLinkLogin } from './magic-link-login';
+import { useSearchParams } from 'next/navigation';
 
 export default function Login() {
+  const searchParams = useSearchParams();
+  const callbackURL = searchParams.get('callbackURL') || undefined;
   return (
     <div className="relative flex flex-col min-h-[100dvh] items-center justify-center gap-4 p-8">
       <div className="flex justify-center">
-        <div className="flex items-center justify-center rounded-lg bg-black h-13 w-13">
-          <CommandIcon className="h-4 w-4 shrink-0 text-white" />
-        </div>
+        <Logo />
       </div>
 
       <Card className="z-10 mx-auto w-full max-w-[500px]">
@@ -30,9 +31,9 @@ export default function Login() {
         </CardHeader>
         <CardContent>
           <div className="space-y-6">
-            <GoogleLogin />
+            <GoogleLogin callbackURL={callbackURL} />
             <SeparatorWithContent>OR</SeparatorWithContent>
-            <MagicLinkLogin />
+            <MagicLinkLogin callbackURL={callbackURL} />
           </div>
         </CardContent>
       </Card>

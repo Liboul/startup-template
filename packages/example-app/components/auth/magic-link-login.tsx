@@ -26,7 +26,7 @@ const formSchema = z.object({
   email: z.string().email('Email is not valid'),
 });
 
-export function MagicLinkLogin() {
+export function MagicLinkLogin({ callbackURL }: { callbackURL?: string }) {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -35,7 +35,7 @@ export function MagicLinkLogin() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setHasSubmitted(true);
-    await signinMagicLink(values.email);
+    await signinMagicLink(values.email, callbackURL);
   }
 
   if (hasSubmitted) {
