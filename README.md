@@ -12,6 +12,8 @@ Company codebase boilerplate using:
 - Postgre for the DB
 - Prisma for schema management and DB client
 - BetterAuth for authentication with individual accounts and organizations
+- # TODO email provider
+- # TODO CI
 
 # Dev setup
 
