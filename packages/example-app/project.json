@@ -1,8 +1,17 @@
 {
-  "name": "@startup-db/example-app",
+  "name": "@startup-template/example-app",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/example-app",
   "projectType": "application",
-  "targets": {},
+  "targets": {
+    "dev": {
+      "dependsOn": [
+        {
+          "target": "start",
+          "projects": ["db"]
+        }
+      ]
+    }
+  },
   "tags": []
 }

@@ -4,10 +4,10 @@
   "sourceRoot": "packages/db",
   "projectType": "library",
   "targets": {
-    "start-db": {
+    "start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "./packages/db/start-db.sh"
+        "command": "./packages/db/start.sh"
       }
     }
   },
