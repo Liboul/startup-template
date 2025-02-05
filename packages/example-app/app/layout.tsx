@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: 'Welcome to startup-template',
-  description: 'startup-template description',
+  title: 'Welcome to Startup Template',
+  description: 'Startup Template',
 };
 
 export default function RootLayout({
