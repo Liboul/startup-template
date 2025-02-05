@@ -5,7 +5,7 @@ import {
   CardContent,
   CardHeader,
 } from '@startup-template/ui/components/card';
-import { Separator } from '@startup-template/ui/components/separator';
+import { SeparatorWithContent } from '@startup-template/ui/components/separator-with-content';
 import { CommandIcon } from 'lucide-react';
 import { GoogleLogin } from './google-login';
 import { MagicLinkLogin } from './magic-link-login';
@@ -31,15 +31,7 @@ export default function Login() {
         <CardContent>
           <div className="space-y-6">
             <GoogleLogin />
-
-            <div className="relative">
-              <div className="flex items-center gap-4">
-                <Separator className="flex-1" />
-                <span className="text-sm text-muted-foreground">OR</span>
-                <Separator className="flex-1" />
-              </div>
-            </div>
-
+            <SeparatorWithContent>OR</SeparatorWithContent>
             <MagicLinkLogin />
           </div>
         </CardContent>
