@@ -26,10 +26,10 @@
   "include": [
     "../../dist/packages/example-app/.next/types/**/*.ts",
     "../../packages/example-app/.next/types/**/*.ts",
-    "app/**/*.js",
-    "app/**/*.jsx",
-    "app/**/*.ts",
-    "app/**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
     "next-env.d.ts",
     ".next/types/**/*.ts"
   ],
