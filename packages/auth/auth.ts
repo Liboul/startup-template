@@ -4,6 +4,7 @@ import { prismaAdapter } from 'better-auth/adapters/prisma';
 import { nextCookies } from 'better-auth/next-js';
 import { organization } from 'better-auth/plugins';
 import { magicLink } from 'better-auth/plugins';
+import { sendEmail } from '@startup-template/email';
 
 if (!process.env.GOOGLE_CLIENT_ID) {
   throw new Error('GOOGLE_CLIENT_ID is not set');
@@ -25,7 +26,11 @@ export const auth = betterAuth({
     nextCookies(),
     magicLink({
       sendMagicLink: (data) => {
-        console.log(data);
+        sendEmail({
+          To: data.email,
+          Subject: 'Sign into Startup Template',
+          HtmlBody: `<a href="${data.url}">Click here to login</a>`,
+        });
       },
     }),
   ],
