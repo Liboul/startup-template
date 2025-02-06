@@ -4,6 +4,9 @@ import { ChevronsUpDown, Plus } from 'lucide-react';
 
 import { authClient } from '@/auth/client';
 import { Logo } from '@/components/logo';
+import { CreateOrganizationDialog } from '@/components/organization/create-organization-dialog';
+import { cn } from '@startup-template/ui';
+import { DialogTrigger } from '@startup-template/ui/components/dialog';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,7 +20,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@startup-template/ui/components/sidebar';
-import { cn } from '@startup-template/ui';
 import { useRouter } from 'next/navigation';
 
 export function OrganizationSwitcher() {
@@ -72,22 +74,26 @@ export function OrganizationSwitcher() {
               </DropdownMenuItem>
             ))}
             <DropdownMenuSeparator />
-            <DropdownMenuItem
-              className="gap-2 p-2"
-              onClick={() => {
-                authClient.organization.create({
-                  name: 'Google',
-                  slug: 'google',
-                });
-              }}
-            >
-              <div className="flex size-6 items-center justify-center rounded-md border bg-background">
-                <Plus className="size-4" />
-              </div>
-              <div className="font-medium text-muted-foreground">
-                Create organization
-              </div>
-            </DropdownMenuItem>
+            <CreateOrganizationDialog
+              trigger={
+                <DialogTrigger asChild>
+                  <DropdownMenuItem
+                    className="gap-2 p-2"
+                    onSelect={(e) => {
+                      // Prevent the dropdown from closing
+                      e.preventDefault();
+                    }}
+                  >
+                    <div className="flex size-6 items-center justify-center rounded-md border bg-background">
+                      <Plus className="size-4" />
+                    </div>
+                    <div className="font-medium text-muted-foreground">
+                      Create organization
+                    </div>
+                  </DropdownMenuItem>
+                </DialogTrigger>
+              }
+            />
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
