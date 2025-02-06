@@ -16,6 +16,15 @@ Company codebase boilerplate using:
 - Postmark for sending emails
 - # TODO CI
 
+# Repo setup
+
+- Clone this template
+- Rename the directory to your project name
+- Rename every occurence of `startup-template` to your project name
+- Rename every occurence of `Startup Template` to your project name (humanized)
+- Rename every occurence of `example-app` to your app name, for instance client-app if it serves your clients. Another app could be admin-app, that's why we use NX
+- Tour the repo and remove everything that's not needed for your project
+
 # Company setup
 
 - Setup a google app (https://console.cloud.google.com/apis/credentials)
@@ -29,7 +38,7 @@ Company codebase boilerplate using:
 - Download docker (docker desktop for mac)
 - Install recommended VSCode extensions
 - Start the DB and run the migrations: `nx run db:start && nx run db:migrate`
-- Run `nx dev exanple-app` to start the dev server
+- Run `nx dev example-app` to start the dev server
 
 # Deployment
 
