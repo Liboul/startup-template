@@ -6,7 +6,7 @@ export const authClient = createAuthClient({
   plugins: [organizationClient(), magicLinkClient()],
 });
 
-const defaultCallbackURL = '/account/dashboard';
+const defaultCallbackURL = '/org';
 
 export const signinGoogle = async (callbackURL?: string) => {
   const data = await authClient.signIn.social({

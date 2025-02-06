@@ -1,10 +1,9 @@
 import { db } from '@startup-template/db';
+import { sendEmail } from '@startup-template/email';
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
 import { nextCookies } from 'better-auth/next-js';
-import { organization } from 'better-auth/plugins';
-import { magicLink } from 'better-auth/plugins';
-import { sendEmail } from '@startup-template/email';
+import { magicLink, organization } from 'better-auth/plugins';
 
 if (!process.env.GOOGLE_CLIENT_ID) {
   throw new Error('GOOGLE_CLIENT_ID is not set');
@@ -49,4 +48,30 @@ export const auth = betterAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     },
   },
+  databaseHooks: {
+    session: {
+      create: {
+        before: async (session) => {
+          const organization = await getActiveOrganization(session.userId);
+          return {
+            data: {
+              ...session,
+              activeOrganizationId: organization?.id,
+            },
+          };
+        },
+      },
+    },
+  },
 });
+
+const getActiveOrganization = (userId: string) => {
+  return db.organization.findFirst({
+    where: {
+      members: { some: { userId } },
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
+};
