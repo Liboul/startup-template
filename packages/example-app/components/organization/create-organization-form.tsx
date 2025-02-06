@@ -32,8 +32,8 @@ const createOrgSchema = z.object({
 export type CreateOrgFormData = z.infer<typeof createOrgSchema>;
 
 export interface CreateOrganizationFormProps {
-  onSuccess: () => void;
-  onCancel: () => void;
+  onSuccess?: () => void;
+  onCancel?: () => void;
 }
 
 export function CreateOrganizationForm({
@@ -50,7 +50,7 @@ export function CreateOrganizationForm({
   });
 
   async function onSubmit(data: CreateOrgFormData) {
-    const { error } = await authClient.organization.create({
+    const { data: organization, error } = await authClient.organization.create({
       name: data.name,
       slug: data.slug,
     });
@@ -61,8 +61,9 @@ export function CreateOrganizationForm({
       return;
     }
 
-    router.push('/org');
-    onSuccess();
+    authClient.organization.setActive({ organizationId: organization.id });
+    onSuccess?.();
+    router.push('/org/members');
   }
 
   return (
@@ -103,9 +104,11 @@ export function CreateOrganizationForm({
           )}
         />
         <div className="flex justify-end space-x-2">
-          <Button type="button" variant="outline" onClick={onCancel}>
-            Cancel
-          </Button>
+          {onCancel && (
+            <Button type="button" variant="outline" onClick={onCancel}>
+              Cancel
+            </Button>
+          )}
           <Button type="submit">Create</Button>
         </div>
       </form>

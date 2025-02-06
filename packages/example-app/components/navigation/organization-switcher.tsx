@@ -67,7 +67,7 @@ export function OrganizationSwitcher() {
                   await authClient.organization.setActive({
                     organizationId: organization.id,
                   });
-                  router.push('/org');
+                  router.push('/org/dashboard');
                 }}
               >
                 {organization.name}
