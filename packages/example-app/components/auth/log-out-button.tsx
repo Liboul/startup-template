@@ -2,14 +2,15 @@
 
 import { authClient } from '@/auth/client';
 import { Button } from '@startup-template/ui/components/button';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export function LogOutButton() {
+  const router = useRouter();
   return (
     <Button
       onClick={async () => {
         await authClient.signOut();
-        redirect('/');
+        router.push('/');
       }}
     >
       Logout
