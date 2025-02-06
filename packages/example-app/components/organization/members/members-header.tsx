@@ -12,11 +12,11 @@ export function MembersHeader() {
           <DialogTrigger asChild>
             <Button>
               <Plus className="h-4 w-4" />
-              Invite Member
+              Invite teammates
             </Button>
           </DialogTrigger>
         }
       />
     </div>
   );
-} 
+}

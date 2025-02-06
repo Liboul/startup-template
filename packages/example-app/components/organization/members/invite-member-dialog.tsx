@@ -3,6 +3,7 @@
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from '@startup-template/ui/components/dialog';
@@ -24,8 +25,12 @@ export function InviteMemberDialog({ trigger }: InviteMemberDialogProps) {
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <UsersIcon className="h-8 w-8" />
-            <span>Invite Member</span>
+            <span>Invite teammates</span>
           </DialogTitle>
+          <DialogDescription>
+            Invite your team members to collaborate. Enter their work emails to
+            send invites.
+          </DialogDescription>
         </DialogHeader>
         <InviteMemberForm
           onSuccess={() => setOpen(false)}
@@ -34,4 +39,4 @@ export function InviteMemberDialog({ trigger }: InviteMemberDialogProps) {
       </DialogContent>
     </Dialog>
   );
-} 
+}

@@ -4,6 +4,7 @@ import { MembersHeader } from '@/components/organization/members/members-header'
 import { MembersTable } from '@/components/organization/members/members-table';
 import { filterPendingInvitations } from '@/components/organization/members/utils/invitations';
 import { redirect } from 'next/navigation';
+import React from 'react';
 
 export default async function OrganizationMembersPage() {
   const activeOrganization = await getFullActiveOrganization();
