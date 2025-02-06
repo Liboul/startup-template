@@ -22,7 +22,16 @@ export const auth = betterAuth({
     enabled: false,
   },
   plugins: [
-    organization(),
+    organization({
+      async sendInvitationEmail(data) {
+        const inviteLink = `${process.env.BETTER_AUTH_URL}/accept-invitation/${data.id}`;
+        await sendEmail({
+          To: data.email,
+          Subject: `You have been invited to join ${data.organization.name} on Startup Template`,
+          HtmlBody: `<p>You have been invited by <b>${data.inviter.user.email}</b> to join <b>${data.organization.name}</b> on <b>Startup Template</b>.</p><p>Click <a href="${inviteLink}">here</a> to accept the invitation.</p>`,
+        });
+      },
+    }),
     nextCookies(),
     magicLink({
       sendMagicLink: (data) => {

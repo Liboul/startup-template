@@ -1,6 +1,6 @@
 'use client';
 
-import { LayoutDashboard, Settings } from 'lucide-react';
+import { LayoutDashboard, Settings, Users } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -17,6 +17,11 @@ export function OrgNavigationItems() {
       title: 'Dashboard',
       href: `/org/dashboard`,
       icon: LayoutDashboard,
+    },
+    {
+      title: 'Members',
+      href: `/org/members`,
+      icon: Users,
     },
     {
       title: 'Settings',
