@@ -9,30 +9,27 @@ import {
   SidebarMenuItem,
 } from '@startup-template/ui/components/sidebar';
 
-const sidebarNavItems = [
-  {
-    title: 'Dashboard',
-    href: '/account/dashboard',
-    icon: LayoutDashboard,
-  },
-  {
-    title: 'Settings',
-    href: '/account/settings',
-    icon: Settings,
-  },
-];
-
-export function NavigationItems() {
+export function OrgNavigationItems() {
   const pathname = usePathname();
-  
+
+  const sidebarNavItems = [
+    {
+      title: 'Dashboard',
+      href: `/org/dashboard`,
+      icon: LayoutDashboard,
+    },
+    {
+      title: 'Settings',
+      href: `/org/settings`,
+      icon: Settings,
+    },
+  ];
+
   return (
     <SidebarMenu>
       {sidebarNavItems.map((item) => (
         <SidebarMenuItem key={item.href}>
-          <SidebarMenuButton
-            asChild
-            isActive={pathname === item.href}
-          >
+          <SidebarMenuButton asChild isActive={pathname === item.href}>
             <Link href={item.href}>
               <item.icon className="h-4 w-4" />
               <span>{item.title}</span>
@@ -42,4 +39,4 @@ export function NavigationItems() {
       ))}
     </SidebarMenu>
   );
-} 
+}

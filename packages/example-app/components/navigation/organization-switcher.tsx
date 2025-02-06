@@ -1,10 +1,9 @@
 'use client';
 
 import { ChevronsUpDown, Plus } from 'lucide-react';
-import * as React from 'react';
 
+import { authClient } from '@/auth/client';
 import { Logo } from '@/components/logo';
-import { Organization } from '@prisma/client';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,17 +16,12 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  useSidebar,
 } from '@startup-template/ui/components/sidebar';
 
-export function OrganizationSwitcher({
-  organizations,
-}: {
-  organizations: Organization[];
-}) {
-  const { isMobile } = useSidebar();
-  const [activeOrganization, setActiveOrganization] =
-    React.useState<Organization | null>(null);
+export function OrganizationSwitcher() {
+  const { data } = authClient.useListOrganizations();
+  const organizations = data ?? [];
+  const { data: activeOrganization } = authClient.useActiveOrganization();
 
   return (
     <SidebarMenu>
@@ -50,7 +44,7 @@ export function OrganizationSwitcher({
           <DropdownMenuContent
             className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
             align="start"
-            side={isMobile ? 'bottom' : 'right'}
+            side="right"
             sideOffset={4}
           >
             <DropdownMenuLabel className="text-xs text-muted-foreground">
@@ -59,14 +53,26 @@ export function OrganizationSwitcher({
             {organizations.map((organization) => (
               <DropdownMenuItem
                 key={organization.id}
-                onClick={() => setActiveOrganization(organization)}
                 className="gap-2 p-2"
+                onClick={() => {
+                  authClient.organization.setActive({
+                    organizationId: organization.id,
+                  });
+                }}
               >
                 {organization.name}
               </DropdownMenuItem>
             ))}
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="gap-2 p-2">
+            <DropdownMenuItem
+              className="gap-2 p-2"
+              onClick={() => {
+                authClient.organization.create({
+                  name: 'Google',
+                  slug: 'google',
+                });
+              }}
+            >
               <div className="flex size-6 items-center justify-center rounded-md border bg-background">
                 <Plus className="size-4" />
               </div>

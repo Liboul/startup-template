@@ -7,3 +7,10 @@ export const getSession = cache(async () => {
     headers: await headers(),
   });
 });
+
+// This function should only be called in protected routes, so a session should always exist
+export const getSessionOrThrow = async () => {
+  const session = await getSession();
+  if (!session) throw new Error('Unauthorized');
+  return session;
+};

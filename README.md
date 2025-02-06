@@ -1,6 +1,7 @@
 # StartupTemplate
 
 Company codebase boilerplate using:
+
 - NX for monorepo management
 - TS for most things
 - ESLint / Prettier for linting
@@ -16,6 +17,8 @@ Company codebase boilerplate using:
 - # TODO CI
 
 # Company setup
+
+- Setup a google app (https://console.cloud.google.com/apis/credentials)
 - Buy a domain name (Namecheap or Google Domains or ...)
 - Setup a DNS provider (Cloudflare or Hostinger or ...)
 - Setup an email provider (Postmark or SendGrid or ...)
@@ -29,4 +32,5 @@ Company codebase boilerplate using:
 - Run `nx dev exanple-app` to start the dev server
 
 # Deployment
+
 TODO
