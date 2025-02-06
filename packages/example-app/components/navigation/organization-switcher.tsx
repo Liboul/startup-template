@@ -17,11 +17,14 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@startup-template/ui/components/sidebar';
+import { cn } from '@startup-template/ui';
+import { useRouter } from 'next/navigation';
 
 export function OrganizationSwitcher() {
   const { data } = authClient.useListOrganizations();
   const organizations = data ?? [];
   const { data: activeOrganization } = authClient.useActiveOrganization();
+  const router = useRouter();
 
   return (
     <SidebarMenu>
@@ -53,11 +56,16 @@ export function OrganizationSwitcher() {
             {organizations.map((organization) => (
               <DropdownMenuItem
                 key={organization.id}
-                className="gap-2 p-2"
-                onClick={() => {
-                  authClient.organization.setActive({
+                className={cn(
+                  'gap-2 p-2',
+                  activeOrganization?.id === organization.id &&
+                    'bg-sidebar-accent text-sidebar-accent-foreground',
+                )}
+                onClick={async () => {
+                  await authClient.organization.setActive({
                     organizationId: organization.id,
                   });
+                  router.push('/org');
                 }}
               >
                 {organization.name}
