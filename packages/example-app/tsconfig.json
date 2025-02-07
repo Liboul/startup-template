@@ -47,10 +47,16 @@
   ],
   "references": [
     {
-      "path": "../ui"
+      "path": "../api"
     },
     {
-      "path": "../api"
+      "path": "../auth"
+    },
+    {
+      "path": "../db"
+    },
+    {
+      "path": "../ui"
     }
   ]
 }

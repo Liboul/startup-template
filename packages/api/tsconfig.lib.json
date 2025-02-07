@@ -13,6 +13,9 @@
   "references": [
     {
       "path": "../db/tsconfig.lib.json"
+    },
+    {
+      "path": "../auth/tsconfig.lib.json"
     }
   ],
   "exclude": ["jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]

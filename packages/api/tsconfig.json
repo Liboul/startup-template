@@ -7,6 +7,9 @@
       "path": "../db"
     },
     {
+      "path": "../auth"
+    },
+    {
       "path": "./tsconfig.lib.json"
     }
   ]
