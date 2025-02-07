@@ -28,6 +28,12 @@
         "cwd": "packages/db"
       }
     },
+    "studio": {
+      "command": "prisma studio",
+      "options": {
+        "cwd": "packages/db"
+      }
+    },
     "deploy": {
       "command": "prisma migrate deploy",
       "options": {

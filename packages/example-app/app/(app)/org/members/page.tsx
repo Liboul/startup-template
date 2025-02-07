@@ -1,13 +1,14 @@
-import { getFullActiveOrganization } from '@/auth/get-full-active-organization';
+'use client';
+
+import { authClient } from '@/auth/client';
 import { InvitationsTable } from '@/components/organization/members/invitations-table';
 import { MembersHeader } from '@/components/organization/members/members-header';
 import { MembersTable } from '@/components/organization/members/members-table';
 import { filterPendingInvitations } from '@/components/organization/members/utils/invitations';
 import { redirect } from 'next/navigation';
-import React from 'react';
 
-export default async function OrganizationMembersPage() {
-  const activeOrganization = await getFullActiveOrganization();
+export default function OrganizationMembersPage() {
+  const { data: activeOrganization } = authClient.useActiveOrganization();
 
   if (!activeOrganization) return redirect('/');
 

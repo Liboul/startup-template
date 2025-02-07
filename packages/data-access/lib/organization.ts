@@ -9,4 +9,4 @@ export async function findFirstOrganizationByUserId(userId: string) {
       createdAt: 'desc',
     },
   });
-} 
+}

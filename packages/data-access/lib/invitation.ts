@@ -8,4 +8,4 @@ export async function findInvitationById(invitationId: string) {
       user: true,
     },
   });
-} 
+}

@@ -12,4 +12,4 @@ export async function findManyExamplePosts() {
   return db.examplePost.findMany({
     orderBy: { createdAt: 'desc' },
   });
-} 
+}
