@@ -6,7 +6,7 @@
   "main": "./index.ts",
   "types": "./index.ts",
   "scripts": {
-    "postinstall": "npx nx run db:generate-types"
+    "postinstall": "prisma generate"
   },
   "exports": {
     ".": {
