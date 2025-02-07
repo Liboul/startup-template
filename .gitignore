@@ -54,3 +54,4 @@ test-output
 # Data
 data/postgres/*
 !data/postgres/.keep
+.vercel

@@ -1,5 +1,0 @@
-{
-  "buildCommand": "npx nx build example-app",
-  "installCommand": "npm install",
-  "outputDirectory": "packages/example-app/.next"
-}

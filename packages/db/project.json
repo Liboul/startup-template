@@ -27,6 +27,12 @@
       "options": {
         "cwd": "packages/db"
       }
+    },
+    "deploy": {
+      "command": "prisma migrate deploy",
+      "options": {
+        "cwd": "packages/db"
+      }
     }
   },
   "tags": []
