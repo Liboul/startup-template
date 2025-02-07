@@ -40,6 +40,7 @@ Company codebase boilerplate using:
 - Create a project, directory is packages/example-app, setup the env variables, including `DATABASE_URL`
 - Setup the projet's domain on Vercel, this requires adding a CNAME record on your domain provider
 - Activate Speed Insights on Vercel, the setup is already done in the codebase (Note that it's blocked by adblockers, so to test it make sure you turn the adblockers off)
+- Go to the website, cross your fingers, and the app should be running smoothly in production!
 
 # Dev setup
 
