@@ -1,7 +1,8 @@
 import { TRPCReactProvider } from '@/trpc/react';
+import { HydrateClient } from '@/trpc/server';
 import { Toaster } from '@startup-template/ui/components/sonner';
 import '@startup-template/ui/styles/globals.css';
-
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({
@@ -23,8 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          <HydrateClient>{children}</HydrateClient>
+        </TRPCReactProvider>
         <Toaster />
+        <SpeedInsights />
       </body>
     </html>
   );
