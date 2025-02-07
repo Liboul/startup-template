@@ -1,5 +1,8 @@
 import { z } from 'zod';
-
+import {
+  createExamplePost,
+  findManyExamplePosts,
+} from '@startup-template/data-access/example-post';
 import { createTRPCRouter, publicProcedure } from '../trpc';
 
 export const examplePostRouter = createTRPCRouter({
@@ -13,19 +16,12 @@ export const examplePostRouter = createTRPCRouter({
 
   create: publicProcedure
     .input(z.object({ title: z.string().min(1) }))
-    .mutation(async ({ ctx, input }) => {
-      return ctx.db.examplePost.create({
-        data: {
-          title: input.title,
-        },
-      });
+    .mutation(async ({ input }) => {
+      return createExamplePost(input.title);
     }),
 
-  getAll: publicProcedure.query(async ({ ctx }) => {
-    const post = await ctx.db.examplePost.findMany({
-      orderBy: { createdAt: 'desc' },
-    });
-
-    return post ?? null;
+  getAll: publicProcedure.query(async () => {
+    const posts = await findManyExamplePosts();
+    return posts ?? null;
   }),
 });

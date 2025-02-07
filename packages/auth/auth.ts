@@ -1,4 +1,5 @@
 import { db } from '@startup-template/db';
+import { findFirstOrganizationByUserId } from '@startup-template/data-access/organization';
 import { sendEmail } from '@startup-template/email';
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
@@ -52,7 +53,9 @@ export const auth = betterAuth({
     session: {
       create: {
         before: async (session) => {
-          const organization = await getActiveOrganization(session.userId);
+          const organization = await findFirstOrganizationByUserId(
+            session.userId,
+          );
           return {
             data: {
               ...session,
@@ -64,14 +67,3 @@ export const auth = betterAuth({
     },
   },
 });
-
-const getActiveOrganization = (userId: string) => {
-  return db.organization.findFirst({
-    where: {
-      members: { some: { userId } },
-    },
-    orderBy: {
-      createdAt: 'desc',
-    },
-  });
-};

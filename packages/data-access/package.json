@@ -1,0 +1,17 @@
+{
+  "name": "@startup-template/data-access",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    "./*": {
+      "types": "./lib/*.ts",
+      "import": "./lib/*.ts",
+      "default": "./lib/*.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "dependencies": {}
+}
