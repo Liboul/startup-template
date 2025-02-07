@@ -22,7 +22,15 @@ Company codebase boilerplate using:
 - Clone this template and link it to that github repo
 - Buy a domain name (Namecheap or Google Domains or ...)
 - Setup a DNS provider (Cloudflare or Hostinger or ...)
-- Setup a google app (https://console.cloud.google.com/apis/credentials)
+- Setup a google app (https://console.cloud.google.com/apis/credentials).
+  - Authorized JavaScript origins:
+    - http://localhost:3000
+    - https://startup-template-example-app.vercel.app
+    - https://startup-template.example.com
+  - Authorized redirect URIs:
+    - http://localhost:3000/api/auth/callback/google
+    - https://startup-template-example-app.vercel.app/api/auth/callback/google
+    - https://startup-template.example.com/api/auth/callback/google
 - Setup an email provider (Postmark or SendGrid or ...)
 - Rename the root directory to your project name
 - Rename every occurence of `startup-template` to your project name
