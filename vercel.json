@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd ../.. && npx nx build example-app --prod",
+  "installCommand": "cd ../.. && npm install",
+  "outputDirectory": ".next",
+  "framework": "nextjs"
+}

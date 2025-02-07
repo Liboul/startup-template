@@ -25,6 +25,11 @@ Company codebase boilerplate using:
 - Rename every occurence of `example-app` to your app name, for instance client-app if it serves your clients. Another app could be admin-app, that's why we use NX
 - Tour the repo and remove everything that's not needed for your project
 
+# Deployment
+- Create a Vercel account
+- Create a project
+- Create a database (e.g. neon)
+
 # Company setup
 
 - Setup a google app (https://console.cloud.google.com/apis/credentials)
