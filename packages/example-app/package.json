@@ -7,9 +7,6 @@
     "projectType": "application",
     "sourceRoot": "packages/example-app"
   },
-  "scripts": {
-    "postinstall": "npx nx run db:generate-types"
-  },
   "dependencies": {
     "next": "~15.1.4",
     "react": "19.0.0",
