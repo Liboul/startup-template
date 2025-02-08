@@ -11,17 +11,26 @@ export default async function Home() {
       <h2 className="text-2xl font-bold">
         Starter template for your next startup
       </h2>
-      <h3 className="text-xl">/ would contain a landing page. Login to see the app</h3>
+      <h3 className="text-xl">
+        / would contain a landing page. Login to see the app
+      </h3>
 
       {session?.user ? (
         <div>
-          <p>User: {session.user.email}</p>
-          <LogOutButton />
+          <p>
+            Signed in as <b>{session.user.email}</b>
+          </p>
+          <div>
+            <LogOutButton />
+          </div>
+          <div>
+            <Link href="/org/dashboard">Dashboard</Link>
+          </div>
         </div>
       ) : (
         <p>
           <Button variant="outline" asChild>
-            <Link href="/login">Login</Link>
+            <Link href="/">Login</Link>
           </Button>
         </p>
       )}

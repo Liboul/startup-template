@@ -61,9 +61,12 @@ export function CreateOrganizationForm({
       return;
     }
 
-    authClient.organization.setActive({ organizationId: organization.id });
+    await authClient.organization.setActive({
+      organizationId: organization.id,
+    });
     onSuccess?.();
     router.push('/org/members');
+    router.refresh();
   }
 
   return (
