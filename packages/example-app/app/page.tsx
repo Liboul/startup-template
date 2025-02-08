@@ -7,11 +7,11 @@ export default async function Home() {
   const session = await getSession();
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-
-      <h2 className="text-2xl font-bold">Button from design system package</h2>
-      <Button>Click me</Button>
+    <div className="min-h-[100vh] flex flex-col items-center justify-center">
+      <h2 className="text-2xl font-bold">
+        Starter template for your next startup
+      </h2>
+      <h3 className="text-xl">/ would contain a landing page. Login to see the app</h3>
 
       {session?.user ? (
         <div>
