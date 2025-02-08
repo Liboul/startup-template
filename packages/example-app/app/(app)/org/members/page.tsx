@@ -5,12 +5,14 @@ import { InvitationsTable } from '@/components/organization/members/invitations-
 import { MembersHeader } from '@/components/organization/members/members-header';
 import { MembersTable } from '@/components/organization/members/members-table';
 import { filterPendingInvitations } from '@/components/organization/members/utils/invitations';
-import { redirect } from 'next/navigation';
 
 export default function OrganizationMembersPage() {
-  const { data: activeOrganization } = authClient.useActiveOrganization();
+  const { data: activeOrganization, isPending } =
+    authClient.useActiveOrganization();
 
-  if (!activeOrganization) return redirect('/');
+  if (isPending || !activeOrganization) {
+    return '';
+  }
 
   const pendingInvitations = filterPendingInvitations(
     activeOrganization.invitations,
