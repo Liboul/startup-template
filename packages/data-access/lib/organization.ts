@@ -10,3 +10,9 @@ export async function findFirstOrganizationByUserId(userId: string) {
     },
   });
 }
+
+export async function findOrganizationById(organizationId: string) {
+  return db.organization.findUnique({
+    where: { id: organizationId },
+  });
+}

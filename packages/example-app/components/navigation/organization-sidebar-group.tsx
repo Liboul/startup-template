@@ -1,16 +1,14 @@
-'use client';
-
-import { authClient } from '@/auth/client';
+import { api } from '@/trpc/server';
 import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
 } from '@startup-template/ui/components/sidebar';
-import { OrgNavigationItems } from './org-navigation-items';
 import { BuildingIcon } from 'lucide-react';
+import { OrgNavigationItems } from './org-navigation-items';
 
 export function OrganizationSidebarGroup() {
-  const { data: activeOrganization } = authClient.useActiveOrganization();
+  const activeOrganization = api.organization.getActive();
 
   if (!activeOrganization) {
     return null;

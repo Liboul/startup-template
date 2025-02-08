@@ -7,7 +7,7 @@ import {
 } from '@startup-template/ui/components/sidebar';
 import { NavUser } from './nav-user';
 import { OrganizationSidebarGroup } from './organization-sidebar-group';
-import { OrganizationSwitcher } from './organization-switcher';
+import { OrganizationSwitcher } from './organization-switcher/organization-switcher';
 import { AccountSidebarGroup } from './account-sidebar-group';
 
 export async function AppSidebar() {
