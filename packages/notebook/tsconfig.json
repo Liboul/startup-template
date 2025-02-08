@@ -4,6 +4,9 @@
   "include": [],
   "references": [
     {
+      "path": "../serverless-function"
+    },
+    {
       "path": "../api"
     },
     {

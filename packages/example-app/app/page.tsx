@@ -30,7 +30,7 @@ export default async function Home() {
       ) : (
         <p>
           <Button variant="outline" asChild>
-            <Link href="/">Login</Link>
+            <Link href="/login">Login</Link>
           </Button>
         </p>
       )}

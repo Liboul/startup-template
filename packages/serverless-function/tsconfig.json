@@ -4,15 +4,6 @@
   "include": [],
   "references": [
     {
-      "path": "../email"
-    },
-    {
-      "path": "../data-access"
-    },
-    {
-      "path": "../db"
-    },
-    {
       "path": "./tsconfig.lib.json"
     }
   ]
