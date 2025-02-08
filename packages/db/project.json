@@ -39,6 +39,12 @@
       "options": {
         "cwd": "packages/db"
       }
+    },
+    "reset": {
+      "command": "prisma migrate reset",
+      "options": {
+        "cwd": "packages/db"
+      }
     }
   },
   "tags": []
