@@ -39,6 +39,15 @@ Company codebase boilerplate using:
 - Rename folder example-app into your app name, for instance client-app
 - Tour the repo and remove everything that's not needed for your project
 
+# Dev setup
+
+- Create .env at the root and change the values to your own, including changing the db name
+- `npm install`
+- Download docker (docker desktop for mac)
+- Install recommended VSCode extensions
+- Start the DB and run the migrations: `nx run db:migrate`
+- Run `nx dev example-app` to start the dev server
+
 # Deployment
 
 - Create a Vercel account
@@ -49,15 +58,3 @@ Company codebase boilerplate using:
 - Setup the projet's domain on Vercel, this requires adding a CNAME record on your domain provider
 - Activate Speed Insights on Vercel, the setup is already done in the codebase (Note that it's blocked by adblockers, so to test it make sure you turn the adblockers off)
 - Go to the website, cross your fingers, and the app should be running smoothly in production!
-
-# Dev setup
-
-- Create .env at the root and change the values to your own
-- Download docker (docker desktop for mac)
-- Install recommended VSCode extensions
-- Start the DB and run the migrations: `nx run db:start && nx run db:migrate`
-- Run `nx dev example-app` to start the dev server
-
-# Deployment
-
-TODO
