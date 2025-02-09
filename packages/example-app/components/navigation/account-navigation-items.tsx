@@ -23,8 +23,7 @@ export function AccountNavigationItems() {
       href: '/account/settings',
       icon: Settings,
     },
-
-  ];
+  ] as const;
 
   return (
     <SidebarMenu>

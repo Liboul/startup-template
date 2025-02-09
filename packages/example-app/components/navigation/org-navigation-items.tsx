@@ -28,7 +28,7 @@ export function OrgNavigationItems() {
       href: `/org/settings`,
       icon: Settings,
     },
-  ];
+  ] as const;
 
   return (
     <SidebarMenu>
