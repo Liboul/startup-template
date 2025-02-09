@@ -1,4 +1,3 @@
-import { NextRequest } from 'next/server';
 import { waitUntil } from '@vercel/functions';
 import {
   getSecretApiKey,
@@ -15,10 +14,10 @@ export interface Options {
 // }, { skipAuthentication: false });
 
 export function defineServerlessFunction(
-  backgroundHandler: (request: NextRequest) => Promise<void>,
+  backgroundHandler: (request: Request) => Promise<void>,
   options: Options = { skipAuthentication: false },
 ) {
-  return function POST(request: NextRequest) {
+  return function POST(request: Request) {
     if (!options.skipAuthentication && !passesAuthentication(request)) {
       return new Response('Unauthorized', { status: 401 });
     }
