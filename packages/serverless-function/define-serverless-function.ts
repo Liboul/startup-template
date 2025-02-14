@@ -28,7 +28,7 @@ export function defineServerlessFunction(
   };
 }
 
-function passesAuthentication(request: NextRequest): boolean {
+function passesAuthentication(request: Request): boolean {
   const apiKey = request.headers.get(SERVERLESS_FUNCTION_API_KEY_HEADER_NAME);
   return apiKey === getSecretApiKey();
 }
