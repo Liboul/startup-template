@@ -17,6 +17,7 @@ import { toast } from 'sonner';
 import { AlertCircle, Plus } from 'lucide-react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { z } from 'zod';
+import { useRef } from 'react';
 
 const inviteMemberSchema = z.object({
   emails: z.array(
@@ -37,6 +38,7 @@ export function InviteMemberForm({
   onSuccess,
   onCancel,
 }: InviteMemberFormProps) {
+  const formContainerRef = useRef<HTMLFormElement>(null);
   const form = useForm<InviteMemberFormData>({
     resolver: zodResolver(inviteMemberSchema),
     defaultValues: {
@@ -48,6 +50,45 @@ export function InviteMemberForm({
     control: form.control,
     name: 'emails',
   });
+
+  const handleAppend = () => {
+    append({ email: '' });
+    // Scroll to bottom after adding new field
+    setTimeout(() => {
+      if (formContainerRef.current) {
+        formContainerRef.current.scrollTop = formContainerRef.current.scrollHeight;
+      }
+    }, 0);
+  };
+
+  // Handle paste event to add multiple emails at once
+  const handlePaste = (
+    e: React.ClipboardEvent<HTMLInputElement>,
+    index: number,
+  ) => {
+    e.preventDefault();
+    const pastedText = e.clipboardData.getData('text');
+    const emails = pastedText
+      .split(/[,\n]/) // Split by comma or newline
+      .map((email) => email.trim())
+      .filter((email) => email.length > 0); // Remove empty strings
+
+    if (emails.length > 0) {
+      // Update the current field
+      form.setValue(`emails.${index}.email`, emails[0]);
+
+      // Add new fields for remaining emails
+      emails.slice(1).forEach((email) => {
+        append({ email });
+      });
+      // Scroll to bottom after adding all fields
+      setTimeout(() => {
+        if (formContainerRef.current) {
+          formContainerRef.current.scrollTop = formContainerRef.current.scrollHeight;
+        }
+      }, 0);
+    }
+  };
 
   async function onSubmit(data: InviteMemberFormData) {
     try {
@@ -79,7 +120,14 @@ export function InviteMemberForm({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-4 max-h-[60vh] overflow-y-auto -m-3 p-3"
+        ref={formContainerRef}
+      >
+        <p className="text-sm text-muted-foreground">
+          Tip: You can paste a comma-separated list or multiple lines of email addresses
+        </p>
         {form.formState.errors.root && (
           <Alert variant="destructive">
             <AlertCircle className="h-4 w-4" />
@@ -99,7 +147,11 @@ export function InviteMemberForm({
                     <FormLabel>Email address</FormLabel>
                     <FormControl>
                       <div className="flex gap-2 items-center">
-                        <Input placeholder="member@example.com" {...field} />
+                        <Input
+                          placeholder="member@example.com"
+                          {...field}
+                          onPaste={(e) => handlePaste(e, index)}
+                        />
                         {fields.length > 1 && (
                           <Button
                             type="button"
@@ -124,7 +176,7 @@ export function InviteMemberForm({
           <Button
             type="button"
             variant="ghost"
-            onClick={() => append({ email: '' })}
+            onClick={handleAppend}
           >
             <Plus className="h-4 w-4" />
             Invite another member
