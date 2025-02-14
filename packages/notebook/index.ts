@@ -37,7 +37,7 @@ async function testServerlessFunction() {
     'Make sure to run nx dev example-app to test serverless function',
   );
   const response = await callServerlessFunction(
-    'http://localhost:3000/api/example-serverless-function',
+    '/api/example-serverless-function',
   );
   console.log(`Serverless function: ${JSON.stringify(response, null, 2)}`);
   console.log('Check out the server logs to make sure the function was called');

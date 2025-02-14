@@ -13,10 +13,17 @@ export function callServerlessFunction(
     [SERVERLESS_FUNCTION_API_KEY_HEADER_NAME]: getSecretApiKey(),
     ...options.headers,
   };
-  console.log('Headers:', JSON.stringify(headers, null, 2));
-  return betterFetch(url, {
+
+  return betterFetch(`${getBaseUrl()}${url}`, {
     ...options,
     method: 'POST',
     headers,
   });
 }
+
+const getBaseUrl = () => {
+  if (!process.env.BASE_URL) {
+    throw new Error('BASE_URL is not set');
+  }
+  return process.env.BASE_URL;
+};
