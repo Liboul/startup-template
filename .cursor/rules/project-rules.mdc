@@ -1,0 +1,384 @@
+---
+description: Project rules
+globs: **/*
+---
+## Project Overview
+
+This is a TypeScript-based monorepo using NX.
+
+## Dependencies
+
+All dependencies are installed at the root, using npm, not in individual packages
+
+```
+// ✅ DO: Use npm to install depedencies at the root of the NX project
+npm install react-markdown
+
+// ❌ DON'T: Use pnpm or yarn
+yarn install react-markdown
+
+// ❌ DON'T: Install dependencies in individual pacakges
+cd packages/client-app && npm install react-markdown
+
+```
+
+## Architecture Guidelines
+
+### Technology Stack
+
+- NX for monorepo management
+- NextJS for frontend applications
+- tRPC for type-safe API communication
+- Prisma for database management
+- tailwind and shadcn/ui components for the styling and design system
+
+### Package Structure
+
+- `job-analyzer`: AI-powered job posting analysis
+- `resume-analyzer`: Resume processing and analysis
+- `school-researcher`: Educational institution research
+- `company-researcher`: Company information research
+- `db`: Database schema and Prisma migrations
+- `api`: tRPC API routes
+- `auth`: Authentication system (BetterAuth)
+- `data-access`: Database access layer
+- `client-app`: Frontend application for clients
+
+## Code Standards
+
+### Type Safety
+
+```typescript
+// ✅ DO: Use Zod for data validation and type inference when using tRPC or calling an LLM with structured output
+import { z } from "zod";
+const jobSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+});
+```
+
+### Database Access
+
+```typescript
+// ✅ DO: Use data-access layer with proper typing
+import { findJob } from '@izno/data-access/job';
+
+const doSomethingWithJob = async (jobId: string) => {
+  const job = await findJob(jobId);
+  // ...
+};
+
+// ❌ DON'T: Access database directly from business logic
+import { db } from '@izno/db';
+
+const doSomethingWithJob = async (jobId: string) => {
+  const job = await db.job.where(id: jobId);
+  // ...
+};
+```
+
+## AI Model Usage
+
+### Model Hierarchy
+
+- Prefer using model clients from langchain when possible
+
+1. GPT-4 ('gpt-4o'): Complex analysis tasks
+2. Gemini: Document parsing and structured data extraction
+3. Tavily: Web research and data enrichment
+
+###
+
+### AI Response Structure
+
+```typescript
+// ✅ DO: Use Zod schemas for AI responses
+const jobAnalysisSchema = z.object({
+  requirements: z.array(z.string()),
+  skills: z.array(z.string()),
+  experience: z.number().optional(),
+});
+
+const modelWithStructuredOutput = model.withStructuredOutput(jobAnalysisSchema);
+
+// ❌ DON'T: Use untyped responses
+```
+
+## File Organization
+
+### Component Structure
+
+```typescript
+// ✅ DO: Organize components by feature
+/components
+  /jobs
+    /job-creation
+    /job-show
+  /organizations
+    /org-settings
+    /org-members
+
+// ❌ DON'T: Mix features in same directory
+/components
+  /forms
+  /tables
+  /modals
+```
+
+### Component splitting
+
+```tsx
+// ✅ DO: Split components when it makes sense
+const JobApplicationForm = () => {
+  return (
+    <Form>
+      <PersonalInfoSection />
+      <ExperienceSection />
+      <EducationSection />
+      <SkillsSection />
+      <Button type="submit">Submit Application</Button>
+    </Form>
+  );
+};
+
+const PersonalInfoSection = () => (
+  // ...
+);
+
+// ❌ DON'T: Allow huge components with big sub-components
+const BigJobApplicationForm = () => {
+  return (
+    <Form>
+      <Section>
+        {/* ... 50+ lines of personal info fields ... */}
+        <Input label="Full Name" name="fullName" />
+        <Input label="Email" name="email" />
+        <Input label="Phone" name="phone" />
+        <Input label="Address" name="address" />
+        <Select label="Country" name="country">
+          {/* ... many country options ... */}
+        </Select>
+
+        {/* ... 100+ lines of experience fields ... */}
+        <h3>Experience</h3>
+        <Input label="Company" name="company" />
+        <Input label="Position" name="position" />
+        <DatePicker label="Start Date" name="startDate" />
+        {/* ... many more fields ... */}
+
+        {/* ... 70+ lines of education fields ... */}
+        <h3>Education</h3>
+        <Input label="School" name="school" />
+        <Input label="Degree" name="degree" />
+        {/* ... many more fields ... */}
+
+        {/* ... 80+ lines of skills and other fields ... */}
+      </Section>
+      <Button type="submit">Submit Application</Button>
+    </Form>
+  );
+```
+
+### Business Logic Separation
+
+```typescript
+// ✅ DO: Separate concerns
+/packages
+  /job-analyzer     // AI analysis logic
+  /data-access      // Database operations
+  /api              // API routes
+  /client-app       // Frontend code
+
+// ❌ DON'T: Mix concerns
+/src
+  /components
+  /database
+  /ai
+```
+
+## tRPC Router & Next API endpoint vs Data-access vs Service
+
+- Direct DB calls should be made through the data access layer, not directly in the router or Next API endpoints
+- Complex Business Logic should not be in the router but in the packages/api/services/ folder
+- For each tRPC procedure and API endpoint, make sure that the user has the right authorization, either the authorization is implicit in the DB call, for example loading a job where the organization is the user's active organization, or by using a policy defined in the packages/api/policies/ folder
+
+## Development Workflow
+
+### Local Development Commands
+
+#### Database Management
+
+```bash
+nx run db:start # Start the database
+nx run db:studio # Run Prisma Studio for database visualization
+nx run db:migrate --name the-migration-name # Create and apply new migrations
+nx run db:deploy # Deploy migrations locally
+nx run db:reset # Reset the database
+nx run db:generate-types # Generate Prisma client types
+```
+
+Always run `nx db:migrate` after modifying Prisma schema
+
+#### Frontend Development
+
+```bash
+# Start the client app (automatically starts DB)
+nx dev client-app
+```
+
+#### Notebooks to test some features through the command line
+
+```bash
+nx run notebook:index # Run the notebook
+```
+
+## Security Guidelines
+
+### API Keys
+
+```typescript
+// ✅ DO: Use environment variables for API keys
+const apiKey = process.env.OPENAI_API_KEY;
+
+// ❌ DON'T: Hardcode sensitive data
+const apiKey = "sk-...";
+```
+
+## Frontend
+
+### NextJS Pages and routes
+
+Dynamic APIs are asynchronous in NextJS
+
+```typescript
+// ✅ DO: Use asynchronous params, headers, searchParams
+export default async function JobPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  // ...
+}
+
+// ❌ DON'T: Use synchronous params, headers, searchParams
+export default function JobPage({ params }: { params: { id: string } }) {
+  const { id } = params;
+  // ...
+}
+```
+
+### Design system
+
+Always try to use Design System components from the packages/ui folder, these are shadcn components or custom components. Here's the list of available components:
+
+- accordion.tsx
+- alert-dialog.tsx
+- alert.tsx
+- aspect-ratio.tsx
+- avatar.tsx
+- badge.tsx
+- breadcrumb.tsx
+- button.tsx
+- calendar.tsx
+- card.tsx
+- carousel.tsx
+- chart.tsx
+- checkbox.tsx
+- collapsible.tsx
+- command.tsx
+- context-menu.tsx
+- dialog.tsx
+- drawer.tsx
+- dropdown-menu.tsx
+- form.tsx
+- hover-card.tsx
+- input-otp.tsx
+- input.tsx
+- label.tsx
+- menubar.tsx
+- navigation-menu.tsx
+- pagination.tsx
+- popover.tsx
+- progress.tsx
+- radio-group.tsx
+- resizable.tsx
+- scroll-area.tsx
+- select.tsx
+- separator-with-content.tsx
+- separator.tsx
+- sheet.tsx
+- sidebar.tsx
+- skeleton.tsx
+- slider.tsx
+- sonner.tsx
+- switch.tsx
+- table.tsx
+- tabs.tsx
+- textarea.tsx
+- toast.tsx
+- toaster.tsx
+- toggle-group.tsx
+- toggle.tsx
+- tooltip.tsx
+
+### React Hook Form
+
+When implementing form, prefer using react-hook-form over native forms.
+
+### Icons
+
+Always use icons from lucide-react instead of ASCII characters
+
+```typescript
+// ✅ DO: Use icons from lucide-react
+import { MoreHorizontal } from "lucide-react";
+
+return (
+  <Button variant="contained">
+    <MoreHorizontal />
+  </Button>
+);
+
+// ❌ DON'T: Redefine components that exist in the design system
+return <button variant="contained">⋮</button>;
+```
+
+### Refs instead of direct document queries
+
+In case you need to interact with the HTML in an imperative way, always use a ref
+
+```tsx
+// ✅ DO: Use refs for imperative changes of HTML
+return (
+  <Button type="submit" onClick={() => inputRef.current?.focus()}>
+    Submit
+  </Button>
+);
+
+// ❌ DON'T: Redefine components that exist in the design system
+return (
+  <button
+    type="submit"
+    onClick={() => document.querySelector("#my-input")?.focus()}
+  >
+    Submit
+  </button>
+);
+```
+
+### Toasts
+
+Prefer toaster to toast
+
+```typescript
+// ✅ DO: Use toaster
+import { toast } from "sonner";
+
+toast.success("Job published!");
+
+// ❌ DON'T: use toast
+import { useToast } from "@izno/ui/hooks/use-toast";
+
+const toast = useToast();
+```
