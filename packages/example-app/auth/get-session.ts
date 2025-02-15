@@ -1,4 +1,4 @@
-import { auth } from '@startup-template/auth';
+import { auth } from '@repo/auth';
 import { headers } from 'next/headers';
 import { cache } from 'react';
 

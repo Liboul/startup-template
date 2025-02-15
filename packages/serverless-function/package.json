@@ -1,5 +1,5 @@
 {
-  "name": "@startup-template/serverless-function",
+  "name": "@repo/serverless-function",
   "version": "0.0.1",
   "private": true,
   "type": "module",

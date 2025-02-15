@@ -1,7 +1,7 @@
 'use client';
 
 import { signinGoogle } from '@/auth/client';
-import { Button } from '@startup-template/ui/components/button';
+import { Button } from '@repo/ui/components/button';
 import { type SVGProps } from 'react';
 
 export function GoogleLogin({ callbackURL }: { callbackURL?: string }) {

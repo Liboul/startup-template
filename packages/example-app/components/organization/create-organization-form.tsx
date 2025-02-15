@@ -2,8 +2,8 @@
 
 import { authClient } from '@/auth/client';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Alert, AlertDescription } from '@startup-template/ui/components/alert';
-import { Button } from '@startup-template/ui/components/button';
+import { Alert, AlertDescription } from '@repo/ui/components/alert';
+import { Button } from '@repo/ui/components/button';
 import {
   Form,
   FormControl,
@@ -11,8 +11,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@startup-template/ui/components/form';
-import { Input } from '@startup-template/ui/components/input';
+} from '@repo/ui/components/form';
+import { Input } from '@repo/ui/components/input';
 import { AlertCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';

@@ -5,7 +5,7 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from '@startup-template/ui/components/avatar';
+} from '@repo/ui/components/avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,13 +14,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@startup-template/ui/components/dropdown-menu';
+} from '@repo/ui/components/dropdown-menu';
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from '@startup-template/ui/components/sidebar';
+} from '@repo/ui/components/sidebar';
 import { BadgeCheck, ChevronsUpDown, LogOut } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';

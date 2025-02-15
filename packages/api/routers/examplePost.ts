@@ -2,7 +2,7 @@ import { z } from 'zod';
 import {
   createExamplePost,
   findManyExamplePosts,
-} from '@startup-template/data-access/example-post';
+} from '@repo/data-access/example-post';
 import { createTRPCRouter, publicProcedure } from '../trpc';
 
 export const examplePostRouter = createTRPCRouter({

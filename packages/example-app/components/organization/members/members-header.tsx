@@ -1,7 +1,7 @@
-import { Button } from '@startup-template/ui/components/button';
+import { Button } from '@repo/ui/components/button';
 import { Plus } from 'lucide-react';
 import { InviteMemberDialog } from './invite-member-dialog';
-import { DialogTrigger } from '@startup-template/ui/components/dialog';
+import { DialogTrigger } from '@repo/ui/components/dialog';
 
 export function MembersHeader() {
   return (

@@ -3,7 +3,7 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
-} from '@startup-template/ui/components/sidebar';
+} from '@repo/ui/components/sidebar';
 import { BuildingIcon } from 'lucide-react';
 import { OrgNavigationItems } from './org-navigation-items';
 

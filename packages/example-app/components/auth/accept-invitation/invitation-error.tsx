@@ -5,8 +5,8 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from '@startup-template/ui/components/card';
-import { Button } from '@startup-template/ui/components/button';
+} from '@repo/ui/components/card';
+import { Button } from '@repo/ui/components/button';
 import { AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 

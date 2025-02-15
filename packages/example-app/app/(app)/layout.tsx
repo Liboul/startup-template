@@ -1,5 +1,5 @@
 import { AppSidebar } from '@/components/navigation/app-sidebar';
-import { SidebarProvider } from '@startup-template/ui/components/sidebar';
+import { SidebarProvider } from '@repo/ui/components/sidebar';
 
 interface AccountLayoutProps {
   children: React.ReactNode;

@@ -1,5 +1,5 @@
 {
-  "name": "@startup-template/source",
+  "name": "@repo/source",
   "packageManager": "npm@11.1.0",
   "workspaces": [
     "packages/*"

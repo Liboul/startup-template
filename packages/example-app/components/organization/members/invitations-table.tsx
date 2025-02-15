@@ -6,7 +6,7 @@ import {
   TableBody,
   TableRow,
   TableCell,
-} from '@startup-template/ui/components/table';
+} from '@repo/ui/components/table';
 
 interface InvitationsTableProps {
   invitations: Invitation[];

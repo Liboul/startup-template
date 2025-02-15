@@ -2,7 +2,7 @@
 //   return new Response('Hello, from API!');
 // }
 
-import { defineServerlessFunction } from '@startup-template/serverless-function';
+import { defineServerlessFunction } from '@repo/serverless-function';
 
 export const POST = defineServerlessFunction(async () => {
   console.log('Hello, from serverless function!');

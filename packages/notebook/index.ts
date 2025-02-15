@@ -1,7 +1,7 @@
-import { exampleFunctionFromLib } from '@startup-template/example-lib';
-import { db } from '@startup-template/db';
-import { createCaller, createTRPCContext } from '@startup-template/api';
-import { callServerlessFunction } from '@startup-template/serverless-function';
+import { db } from '@repo/db';
+import { createCaller, createTRPCContext } from '@repo/api';
+import { exampleFunctionFromLib } from '@repo/example-lib';
+import { callServerlessFunction } from '@repo/serverless-function';
 async function testFunctionFromLib() {
   console.log(exampleFunctionFromLib());
 }

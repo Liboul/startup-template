@@ -1,13 +1,13 @@
 'use client';
 
 import { signinMagicLink } from '@/auth/client';
-import { Button } from '@startup-template/ui/components/button';
-import { Input } from '@startup-template/ui/components/input';
+import { Button } from '@repo/ui/components/button';
+import { Input } from '@repo/ui/components/input';
 import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from '@startup-template/ui/components/alert';
+} from '@repo/ui/components/alert';
 import {
   Form,
   FormControl,
@@ -15,7 +15,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@startup-template/ui/components/form';
+} from '@repo/ui/components/form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';

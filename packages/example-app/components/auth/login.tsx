@@ -2,8 +2,8 @@ import {
   Card,
   CardContent,
   CardHeader,
-} from '@startup-template/ui/components/card';
-import { SeparatorWithContent } from '@startup-template/ui/components/separator-with-content';
+} from '@repo/ui/components/card';
+import { SeparatorWithContent } from '@repo/ui/components/separator-with-content';
 import { GoogleLogin } from './google-login';
 import { MagicLinkLogin } from './magic-link-login';
 

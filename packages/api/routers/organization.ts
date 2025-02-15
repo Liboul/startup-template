@@ -1,5 +1,5 @@
 import { TRPCError } from '@trpc/server';
-import { findOrganizationById } from '@startup-template/data-access/organization';
+import { findOrganizationById } from '@repo/data-access/organization';
 import { createTRPCRouter, protectedProcedure } from '../trpc';
 
 export const organizationRouter = createTRPCRouter({

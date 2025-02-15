@@ -2,12 +2,12 @@ import { getSession } from '@/auth/get-session';
 import Login from '@/components/auth/login';
 import { Logo } from '@/components/logo';
 import { Invitation, Organization, User } from '@prisma/client';
-import { findInvitationById } from '@startup-template/data-access/invitation';
+import { findInvitationById } from '@repo/data-access/invitation';
 import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from '@startup-template/ui/components/alert';
+} from '@repo/ui/components/alert';
 import { MailPlusIcon } from 'lucide-react';
 import { redirect } from 'next/navigation';
 

@@ -1,5 +1,5 @@
 {
-  "name": "@startup-template/example-lib",
+  "name": "@repo/example-lib",
   "version": "0.0.1",
   "private": true,
   "type": "module",

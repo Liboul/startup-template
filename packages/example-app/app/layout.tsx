@@ -1,7 +1,7 @@
 import { TRPCReactProvider } from '@/trpc/react';
 import { HydrateClient } from '@/trpc/server';
-import { Toaster } from '@startup-template/ui/components/sonner';
-import '@startup-template/ui/styles/globals.css';
+import { Toaster } from '@repo/ui/components/sonner';
+import '@repo/ui/styles/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Inter } from 'next/font/google';
 

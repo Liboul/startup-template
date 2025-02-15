@@ -1,4 +1,4 @@
-import { appRouter, createTRPCContext } from '@startup-template/api';
+import { appRouter, createTRPCContext } from '@repo/api';
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
 import { type NextRequest } from 'next/server';
 

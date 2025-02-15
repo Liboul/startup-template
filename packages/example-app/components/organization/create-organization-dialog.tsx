@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@startup-template/ui/components/dialog';
+} from '@repo/ui/components/dialog';
 import { useState } from 'react';
 import { CreateOrganizationForm } from './create-organization-form';
 import { BuildingIcon } from 'lucide-react';

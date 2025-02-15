@@ -1,13 +1,13 @@
 'use client';
 
 import { authClient } from '@/auth/client';
-import { Button } from '@startup-template/ui/components/button';
+import { Button } from '@repo/ui/components/button';
 import {
   Card,
   CardContent,
   CardFooter,
-} from '@startup-template/ui/components/card';
-import { Input } from '@startup-template/ui/components/input';
+} from '@repo/ui/components/card';
+import { Input } from '@repo/ui/components/input';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { User } from 'better-auth';

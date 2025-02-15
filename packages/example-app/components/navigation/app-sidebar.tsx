@@ -4,7 +4,7 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
-} from '@startup-template/ui/components/sidebar';
+} from '@repo/ui/components/sidebar';
 import { NavUser } from './nav-user';
 import { OrganizationSidebarGroup } from './organization-sidebar-group';
 import { OrganizationSwitcher } from './organization-switcher/organization-switcher';

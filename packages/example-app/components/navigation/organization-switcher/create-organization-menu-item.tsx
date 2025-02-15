@@ -1,8 +1,8 @@
 'use client';
 
 import { Plus } from 'lucide-react';
-import { DialogTrigger } from '@startup-template/ui/components/dialog';
-import { DropdownMenuItem } from '@startup-template/ui/components/dropdown-menu';
+import { DialogTrigger } from '@repo/ui/components/dialog';
+import { DropdownMenuItem } from '@repo/ui/components/dropdown-menu';
 import { CreateOrganizationDialog } from '@/components/organization/create-organization-dialog';
 
 export function CreateOrganizationMenuItem() {

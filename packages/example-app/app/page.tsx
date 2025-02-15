@@ -1,6 +1,6 @@
 import { getSession } from '@/auth/get-session';
 import { LogOutButton } from '@/components/auth/log-out-button';
-import { Button } from '@startup-template/ui/components/button';
+import { Button } from '@repo/ui/components/button';
 import Link from 'next/link';
 
 export default async function Home() {

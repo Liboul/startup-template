@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@startup-template/ui/components/button';
+import { Button } from '@repo/ui/components/button';
 import {
   Card,
   CardContent,
@@ -8,11 +8,11 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@startup-template/ui/components/card';
+} from '@repo/ui/components/card';
 import { CheckIcon, XIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Skeleton } from '@startup-template/ui/components/skeleton';
+import { Skeleton } from '@repo/ui/components/skeleton';
 import { authClient } from '@/auth/client';
 import { InvitationError } from './invitation-error';
 

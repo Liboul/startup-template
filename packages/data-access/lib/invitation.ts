@@ -1,4 +1,4 @@
-import { db } from '@startup-template/db';
+import { db } from '@repo/db';
 
 export async function findInvitationById(invitationId: string) {
   return db.invitation.findUnique({

@@ -6,7 +6,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@startup-template/ui/components/dialog';
+} from '@repo/ui/components/dialog';
 import { useState } from 'react';
 import { InviteMemberForm } from './invite-member-form';
 import { UsersIcon } from 'lucide-react';

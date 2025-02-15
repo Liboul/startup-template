@@ -8,7 +8,7 @@ import {
   createCaller,
   createTRPCContext,
   type AppRouter,
-} from '@startup-template/api';
+} from '@repo/api';
 import { createQueryClient } from './query-client';
 
 /**

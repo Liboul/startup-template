@@ -8,12 +8,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@startup-template/ui/components/dropdown-menu';
+} from '@repo/ui/components/dropdown-menu';
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@startup-template/ui/components/sidebar';
+} from '@repo/ui/components/sidebar';
 import { CreateOrganizationMenuItem } from './create-organization-menu-item';
 import { OrganizationMenuItems } from './organization-menu-items';
 

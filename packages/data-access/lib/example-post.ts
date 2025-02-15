@@ -1,4 +1,4 @@
-import { db } from '@startup-template/db';
+import { db } from '@repo/db';
 
 export async function createExamplePost(title: string) {
   return db.examplePost.create({

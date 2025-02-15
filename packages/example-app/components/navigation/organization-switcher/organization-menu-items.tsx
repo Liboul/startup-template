@@ -2,9 +2,9 @@
 
 import { useRouter } from 'next/navigation';
 import { authClient } from '@/auth/client';
-import type { RouterOutput } from '@startup-template/api';
-import { cn } from '@startup-template/ui';
-import { DropdownMenuItem } from '@startup-template/ui/components/dropdown-menu';
+import type { RouterOutput } from '@repo/api';
+import { cn } from '@repo/ui';
+import { DropdownMenuItem } from '@repo/ui/components/dropdown-menu';
 interface OrganizationMenuItemsProps {
   activeOrganization: RouterOutput['organization']['getActive'];
 }

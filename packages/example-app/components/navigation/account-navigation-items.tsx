@@ -7,7 +7,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@startup-template/ui/components/sidebar';
+} from '@repo/ui/components/sidebar';
 
 export function AccountNavigationItems() {
   const pathname = usePathname();

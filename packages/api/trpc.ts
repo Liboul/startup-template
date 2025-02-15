@@ -6,8 +6,8 @@
  * TL;DR - This is where all the tRPC server stuff is created and plugged in. The pieces you will
  * need to use are documented accordingly near the end.
  */
-import { auth } from '@startup-template/auth';
-import { db } from '@startup-template/db';
+import { auth } from '@repo/auth';
+import { db } from '@repo/db';
 import { initTRPC, TRPCError } from '@trpc/server';
 import superjson from 'superjson';
 import { ZodError } from 'zod';

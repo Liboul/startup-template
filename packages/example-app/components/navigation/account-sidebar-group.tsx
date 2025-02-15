@@ -4,7 +4,7 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
-} from '@startup-template/ui/components/sidebar';
+} from '@repo/ui/components/sidebar';
 import { AccountNavigationItems } from './account-navigation-items';
 import { UserIcon } from 'lucide-react';
 

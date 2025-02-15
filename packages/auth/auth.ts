@@ -1,6 +1,6 @@
-import { db } from '@startup-template/db';
-import { findFirstOrganizationByUserId } from '@startup-template/data-access/organization';
-import { sendEmail } from '@startup-template/email';
+import { db } from '@repo/db';
+import { findFirstOrganizationByUserId } from '@repo/data-access/organization';
+import { sendEmail } from '@repo/email';
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
 import { nextCookies } from 'better-auth/next-js';
