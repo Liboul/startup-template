@@ -34,7 +34,7 @@ async function testTrpcCalls() {
 
 async function testServerlessFunction() {
   console.log(
-    'Make sure to run nx dev example-app to test serverless function',
+    'Make sure to run nx dev client-app to test serverless function',
   );
   const response = await callServerlessFunction(
     '/api/example-serverless-function',

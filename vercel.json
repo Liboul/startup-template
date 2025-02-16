@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd ../.. && npx nx run db:deploy && npx nx build example-app --prod",
+  "buildCommand": "cd ../.. && npx nx run db:deploy && npx nx build client-app --prod",
   "installCommand": "cd ../.. && npm install",
   "outputDirectory": ".next",
   "framework": "nextjs",

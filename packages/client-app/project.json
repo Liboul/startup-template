@@ -1,7 +1,7 @@
 {
-  "name": "@repo/example-app",
+  "name": "@repo/client-app",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/example-app",
+  "sourceRoot": "packages/client-app",
   "projectType": "application",
   "targets": {
     "dev": {

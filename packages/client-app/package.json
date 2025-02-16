@@ -1,11 +1,11 @@
 {
-  "name": "@repo/example-app",
+  "name": "@repo/client-app",
   "version": "0.0.1",
   "private": true,
   "nx": {
-    "name": "example-app",
+    "name": "client-app",
     "projectType": "application",
-    "sourceRoot": "packages/example-app"
+    "sourceRoot": "packages/client-app"
   },
   "dependencies": {
     "next": "~15.1.4",

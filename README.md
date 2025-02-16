@@ -25,18 +25,16 @@ Company codebase boilerplate using:
 - Setup a google app (https://console.cloud.google.com/apis/credentials).
   - Authorized JavaScript origins:
     - http://localhost:3000
-    - https://startup-template-example-app.vercel.app
+    - https://startup-template-client-app.vercel.app
     - https://startup-template.example.com
   - Authorized redirect URIs:
     - http://localhost:3000/api/auth/callback/google
-    - https://startup-template-example-app.vercel.app/api/auth/callback/google
+    - https://startup-template-client-app.vercel.app/api/auth/callback/google
     - https://startup-template.example.com/api/auth/callback/google
 - Setup an email provider (Postmark or SendGrid or ...)
 - Rename the root directory to your project name
-- Rename every occurence of `startup-template` to your project name
+- Rename every occurence of `startup-template` to your project name (camel-case)
 - Rename every occurence of `Startup Template` to your project name (humanized)
-- Rename every occurence of `example-app` to your app name, including in package-lock.json, for instance client-app if it serves your clients. Another app could be admin-app, that's why we use NX
-- Rename folder example-app into your app name, for instance client-app
 - Tour the repo and remove everything that's not needed for your project
 
 # Dev setup
@@ -46,7 +44,7 @@ Company codebase boilerplate using:
 - Download docker (docker desktop for mac)
 - Install recommended VSCode extensions
 - Start the DB and run the migrations: `nx run db:migrate`
-- Run `nx dev example-app` to start the dev server
+- Run `nx dev client-app` to start the dev server
 
 # Deployment
 
@@ -54,7 +52,7 @@ Company codebase boilerplate using:
 - Create a database (neon...) in the right region, and save the DATABASE_URL somewhere
 - Check out .env and make sure you have all the values needed for a production deployment
 - Change the regions in vercel.json to your own, and push
-- Create a project, directory is packages/example-app, setup the env variables, including `DATABASE_URL`
+- Create a project, directory is packages/client-app, setup the env variables, including `DATABASE_URL`
 - Setup the projet's domain on Vercel, this requires adding a CNAME record on your domain provider
 - Activate Speed Insights on Vercel, the setup is already done in the codebase (Note that it's blocked by adblockers, so to test it make sure you turn the adblockers off)
 - Go to the website, cross your fingers, and the app should be running smoothly in production!

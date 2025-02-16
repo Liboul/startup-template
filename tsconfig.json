@@ -10,7 +10,7 @@
       "path": "./packages/example-lib"
     },
     {
-      "path": "./packages/example-app"
+      "path": "./packages/client-app"
     },
     {
       "path": "./packages/ui"

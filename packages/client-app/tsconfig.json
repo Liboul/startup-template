@@ -20,12 +20,12 @@
       "@/*": ["./*"]
     },
     "types": ["jest", "node"],
-    "outDir": "out-tsc/example-app",
+    "outDir": "out-tsc/client-app",
     "rootDir": "."
   },
   "include": [
-    "../../dist/packages/example-app/.next/types/**/*.ts",
-    "../../packages/example-app/.next/types/**/*.ts",
+    "../../dist/packages/client-app/.next/types/**/*.ts",
+    "../../packages/client-app/.next/types/**/*.ts",
     "**/*.js",
     "**/*.jsx",
     "**/*.ts",
