@@ -3,6 +3,7 @@
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from '@repo/ui/components/dialog';
@@ -28,6 +29,9 @@ export function CreateOrganizationDialog({
             <BuildingIcon className="h-8 w-8" />
             <span>Create Organization</span>
           </DialogTitle>
+          <DialogDescription>
+            Unless you are expecting an invitation?
+          </DialogDescription>
         </DialogHeader>
         <CreateOrganizationForm
           onSuccess={() => setOpen(false)}

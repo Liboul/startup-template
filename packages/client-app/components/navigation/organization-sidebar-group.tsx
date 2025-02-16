@@ -7,8 +7,8 @@ import {
 import { BuildingIcon } from 'lucide-react';
 import { OrgNavigationItems } from './org-navigation-items';
 
-export function OrganizationSidebarGroup() {
-  const activeOrganization = api.organization.getActive();
+export async function OrganizationSidebarGroup() {
+  const activeOrganization = await api.organization.getActive();
 
   if (!activeOrganization) {
     return null;
