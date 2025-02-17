@@ -20,4 +20,4 @@ export function AccountSidebarGroup() {
       </SidebarGroupContent>
     </SidebarGroup>
   );
-} 
+}

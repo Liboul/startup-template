@@ -3,6 +3,8 @@
 import { authClient } from '@/auth/client';
 import { Loader2 } from 'lucide-react';
 import { AccountSettingsForm } from './settings-form';
+import { LocaleForm } from './locale-form';
+
 export function AccountSettings() {
   const { data: session, isPending } = authClient.useSession();
 
@@ -14,5 +16,10 @@ export function AccountSettings() {
     return null;
   }
 
-  return <AccountSettingsForm user={session.user} />;
+  return (
+    <div className="space-y-6">
+      <AccountSettingsForm user={session.user} />
+      <LocaleForm />
+    </div>
+  );
 }
