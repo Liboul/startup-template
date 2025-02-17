@@ -2,10 +2,13 @@
 
 import { authClient } from '@/auth/client';
 import { Button } from '@repo/ui/components/button';
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 
 export function LogOutButton() {
   const router = useRouter();
+  const t = useTranslations('auth');
+
   return (
     <Button
       onClick={async () => {
@@ -13,7 +16,7 @@ export function LogOutButton() {
         router.push('/');
       }}
     >
-      Logout
+      {t('logout')}
     </Button>
   );
 }

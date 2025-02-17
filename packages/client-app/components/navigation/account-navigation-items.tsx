@@ -29,7 +29,7 @@ export function AccountNavigationItems() {
     <SidebarMenu>
       {sidebarNavItems.map((item) => (
         <SidebarMenuItem key={item.href}>
-          <SidebarMenuButton asChild isActive={pathname === item.href}>
+          <SidebarMenuButton asChild isActive={pathname.includes(item.href)}>
             <Link href={item.href}>
               <item.icon className="h-4 w-4" />
               <span>{item.title}</span>
