@@ -10,6 +10,15 @@ import {
 } from '@repo/ui/components/alert';
 import { MailPlusIcon } from 'lucide-react';
 import { redirect } from 'next/navigation';
+import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
+
+export async function generateMetadata() {
+  const t = await getTranslations('auth.login');
+  return {
+    title: t('title')
+  };
+}
 
 export default async function LoginPage({
   searchParams,
@@ -49,15 +58,19 @@ function InvitationInfo({
 }: {
   invitation: Invitation & { organization: Organization; user: User };
 }) {
+  const t = useTranslations('auth.login.invitation');
+  
   return (
     <Alert>
       <MailPlusIcon className="h-4 w-4" />
       <AlertTitle>
-        Join {invitation.organization.name} on Startup Template
+        {t('title', { organization: invitation.organization.name })}
       </AlertTitle>
       <AlertDescription className="text-muted-foreground">
-        You have been invited by {invitation.user.email} to join{' '}
-        {invitation.organization.name}.
+        {t('description', { 
+          email: invitation.user.email,
+          organization: invitation.organization.name 
+        })}
       </AlertDescription>
     </Alert>
   );

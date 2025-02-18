@@ -24,6 +24,7 @@ import {
 import { BadgeCheck, ChevronsUpDown, LogOut } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 export function NavUser({
   user,
@@ -35,6 +36,8 @@ export function NavUser({
 }) {
   const { isMobile } = useSidebar();
   const router = useRouter();
+  const t = useTranslations('navigation.account');
+  const authT = useTranslations('auth');
 
   return (
     <SidebarMenu>
@@ -84,7 +87,7 @@ export function NavUser({
               <DropdownMenuItem asChild>
                 <Link href="/account">
                   <BadgeCheck />
-                  Account
+                  {t('label')}
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
@@ -96,7 +99,7 @@ export function NavUser({
               }}
             >
               <LogOut />
-              Log out
+              {authT('logout')}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

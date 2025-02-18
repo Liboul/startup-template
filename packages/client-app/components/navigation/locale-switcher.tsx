@@ -11,23 +11,19 @@ import { SidebarMenuButton } from '@repo/ui/components/sidebar';
 import { availableLocales, Locale } from '@/i18n/types';
 import { setLocale } from '@/i18n/setLocale';
 import { useRouter } from 'next/navigation';
-import { useLocale } from 'next-intl';
-
-const localeNames = {
-  en: 'English',
-  fr: 'Français',
-} as const;
+import { useLocale, useTranslations } from 'next-intl';
 
 export function LocaleSwitcher() {
   const router = useRouter();
   const locale = useLocale() as Locale;
+  const t = useTranslations('navigation.locale_switcher.languages');
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <SidebarMenuButton>
           <Globe className="h-4 w-4" />
-          <span>{localeNames[locale]}</span>
+          <span>{t(locale)}</span>
         </SidebarMenuButton>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
@@ -42,7 +38,7 @@ export function LocaleSwitcher() {
             <input type="hidden" name="locale" value={locale} />
             <DropdownMenuItem asChild>
               <button type="submit" className="w-full">
-                {localeNames[locale]}
+                {t(locale)}
               </button>
             </DropdownMenuItem>
           </form>

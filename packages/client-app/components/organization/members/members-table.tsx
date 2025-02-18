@@ -7,6 +7,7 @@ import {
   TableRow,
   TableCell,
 } from '@repo/ui/components/table';
+import { useTranslations } from 'next-intl';
 
 type MemberWithUser = Member & {
   user: {
@@ -19,14 +20,16 @@ interface MembersTableProps {
 }
 
 export function MembersTable({ members }: MembersTableProps) {
+  const t = useTranslations('organization.members.list');
+
   return (
     <div>
-      <h2 className="text-lg font-semibold mb-4">Members</h2>
+      <h2 className="text-lg font-semibold mb-4">{t('title')}</h2>
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>User</TableHead>
-            <TableHead>Joined</TableHead>
+            <TableHead>{t('user')}</TableHead>
+            <TableHead>{t('joined')}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>

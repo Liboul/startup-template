@@ -15,19 +15,10 @@ import {
 import { Input } from '@repo/ui/components/input';
 import { toast } from 'sonner';
 import { AlertCircle, Plus } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { z } from 'zod';
 import { useRef } from 'react';
-
-const inviteMemberSchema = z.object({
-  emails: z.array(
-    z.object({
-      email: z.string().email('Please enter a valid email address'),
-    }),
-  ),
-});
-
-type InviteMemberFormData = z.infer<typeof inviteMemberSchema>;
 
 interface InviteMemberFormProps {
   onSuccess: () => void;
@@ -38,6 +29,18 @@ export function InviteMemberForm({
   onSuccess,
   onCancel,
 }: InviteMemberFormProps) {
+  const t = useTranslations('organization.members.invite_form');
+
+  const inviteMemberSchema = z.object({
+    emails: z.array(
+      z.object({
+        email: z.string().email(t('email.invalid')),
+      }),
+    ),
+  });
+
+  type InviteMemberFormData = z.infer<typeof inviteMemberSchema>;
+
   const formContainerRef = useRef<HTMLFormElement>(null);
   const form = useForm<InviteMemberFormData>({
     resolver: zodResolver(inviteMemberSchema),
@@ -104,16 +107,16 @@ export function InviteMemberForm({
 
       if (errors.length > 0) {
         form.setError('root', {
-          message: 'Failed to invite some members. Please try again.',
+          message: t('error.some_failed'),
         });
         return;
       }
 
-      toast('Invitations have been sent');
+      toast(t('success'));
       onSuccess();
     } catch {
       form.setError('root', {
-        message: 'An error occurred while sending invitations',
+        message: t('error.generic'),
       });
     }
   }
@@ -126,7 +129,7 @@ export function InviteMemberForm({
         ref={formContainerRef}
       >
         <p className="text-sm text-muted-foreground">
-          Tip: You can paste a comma-separated list or multiple lines of email addresses
+          {t('tip')}
         </p>
         {form.formState.errors.root && (
           <Alert variant="destructive">
@@ -144,11 +147,11 @@ export function InviteMemberForm({
                 name={`emails.${index}.email`}
                 render={({ field }) => (
                   <FormItem className="flex-1">
-                    <FormLabel>Email address</FormLabel>
+                    <FormLabel>{t('email.label')}</FormLabel>
                     <FormControl>
                       <div className="flex gap-2 items-center">
                         <Input
-                          placeholder="member@example.com"
+                          placeholder={t('email.placeholder')}
                           {...field}
                           onPaste={(e) => handlePaste(e, index)}
                         />
@@ -159,7 +162,7 @@ export function InviteMemberForm({
                             className="mb-2"
                             onClick={() => remove(index)}
                           >
-                            Remove
+                            {t('remove')}
                           </Button>
                         )}
                       </div>
@@ -179,14 +182,14 @@ export function InviteMemberForm({
             onClick={handleAppend}
           >
             <Plus className="h-4 w-4" />
-            Invite another member
+            {t('add')}
           </Button>
         </div>
         <div className="flex justify-end space-x-2">
           <Button type="button" variant="outline" onClick={onCancel}>
-            Cancel
+            {t('cancel')}
           </Button>
-          <Button type="submit">Invite</Button>
+          <Button type="submit">{t('submit')}</Button>
         </div>
       </form>
     </Form>

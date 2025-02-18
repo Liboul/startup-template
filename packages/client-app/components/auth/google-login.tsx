@@ -3,8 +3,11 @@
 import { signinGoogle } from '@/auth/client';
 import { Button } from '@repo/ui/components/button';
 import { type SVGProps } from 'react';
+import { useTranslations } from 'next-intl';
 
 export function GoogleLogin({ callbackURL }: { callbackURL?: string }) {
+  const t = useTranslations('auth.google');
+  
   return (
     <Button
       onClick={() => signinGoogle(callbackURL)}
@@ -12,7 +15,7 @@ export function GoogleLogin({ callbackURL }: { callbackURL?: string }) {
       variant="outline"
     >
       <ChromeIcon className="mr-2 h-4 w-4 shrink-0" />
-      Connect with Google
+      {t('connect')}
     </Button>
   );
 }

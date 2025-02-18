@@ -8,18 +8,20 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@repo/ui/components/sidebar';
+import { useTranslations } from 'next-intl';
 
 export function AccountNavigationItems() {
   const pathname = usePathname();
+  const t = useTranslations('navigation.account');
 
   const sidebarNavItems = [
     {
-      title: 'Dashboard',
+      title: t('dashboard'),
       href: '/account/dashboard',
       icon: LayoutDashboard,
     },
     {
-      title: 'Settings',
+      title: t('settings'),
       href: '/account/settings',
       icon: Settings,
     },

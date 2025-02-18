@@ -1,5 +1,200 @@
 {
   "auth": {
-    "logout": "Déconnexion"
+    "logout": "Déconnexion",
+    "login": {
+      "title": "Connexion",
+      "invitation": {
+        "title": "Rejoindre {organization} sur Startup Template",
+        "description": "Vous avez été invité(e) par {email} à rejoindre {organization}."
+      }
+    },
+    "google": {
+      "connect": "Se connecter avec Google"
+    },
+    "magic_link": {
+      "email": {
+        "invalid": "L'email n'est pas valide",
+        "label": "Entrez votre email professionnel",
+        "placeholder": "Votre email ici"
+      },
+      "submit": "Envoyer",
+      "check_email": {
+        "title": "Vérifiez votre email ({email})",
+        "description": "Nous avons envoyé un lien d'authentification à votre adresse email. Cliquez sur le lien pour vous connecter à votre compte.",
+        "help": "Vous n'avez pas reçu l'email ? Vérifiez votre dossier spam ou réessayez"
+      }
+    }
+  },
+  "organization": {
+    "settings": {
+      "title": "Paramètres de l'organisation",
+      "description": "Gérez les paramètres de votre organisation ici.",
+      "form": {
+        "name": {
+          "label": "Nom de l'organisation",
+          "placeholder": "Acme Inc.",
+          "required": "Le nom de l'organisation est requis"
+        },
+        "slug": {
+          "label": "Identifiant de l'organisation",
+          "placeholder": "acme",
+          "required": "L'identifiant de l'organisation est requis",
+          "format": "Seuls les lettres minuscules, les chiffres et les tirets sont autorisés",
+          "taken": "Cet identifiant est déjà utilisé"
+        },
+        "submit": "Enregistrer les modifications",
+        "success": "Paramètres de l'organisation mis à jour avec succès",
+        "error": "Échec de la mise à jour des paramètres de l'organisation"
+      }
+    },
+    "dashboard": {
+      "title": "Tableau de bord de l'organisation",
+      "welcome": "Bienvenue sur le tableau de bord de votre organisation !"
+    },
+    "members": {
+      "title": "Membres de l'organisation",
+      "invitations": {
+        "title": "Invitations en attente",
+        "email": "Email",
+        "expires": "Expire",
+        "cancel": "Annuler",
+        "cancel_error": "Échec de l'annulation de l'invitation",
+        "cancel_success": "Invitation annulée",
+        "cancel_error_generic": "Une erreur s'est produite lors de l'annulation de l'invitation"
+      },
+      "invite": {
+        "title": "Inviter des collaborateurs",
+        "description": "Invitez les membres de votre équipe à collaborer. Entrez leurs emails professionnels pour envoyer des invitations."
+      },
+      "list": {
+        "title": "Membres",
+        "user": "Utilisateur",
+        "joined": "A rejoint"
+      },
+      "invite_form": {
+        "tip": "Astuce : Vous pouvez coller une liste d'adresses email séparées par des virgules ou sur plusieurs lignes",
+        "email": {
+          "label": "Adresse email",
+          "placeholder": "membre@exemple.com",
+          "invalid": "Veuillez entrer une adresse email valide"
+        },
+        "remove": "Supprimer",
+        "add": "Inviter un autre membre",
+        "submit": "Inviter",
+        "cancel": "Annuler",
+        "error": {
+          "some_failed": "Échec de l'invitation de certains membres. Veuillez réessayer.",
+          "generic": "Une erreur s'est produite lors de l'envoi des invitations"
+        },
+        "success": "Les invitations ont été envoyées"
+      }
+    },
+    "accept_invitation": {
+      "title": "Invitation à l'organisation",
+      "description": "Vous avez été invité(e) à rejoindre une organisation",
+      "invited_by": "{email} vous a invité(e) à rejoindre {organization}",
+      "sent_to": "Cette invitation a été envoyée à {email}",
+      "accepted": {
+        "title": "Bienvenue chez {organization} !",
+        "description": "Vous avez rejoint l'organisation avec succès. Nous sommes ravis de vous avoir parmi nous !"
+      },
+      "rejected": {
+        "title": "Invitation refusée",
+        "description": "Vous avez refusé l'invitation à rejoindre {organization}"
+      },
+      "decline": "Refuser",
+      "accept": "Accepter l'invitation",
+      "error": "Une erreur s'est produite",
+      "error_page": {
+        "title": "Erreur d'invitation",
+        "description": "Il y a eu un problème avec votre invitation.",
+        "message": "L'invitation à laquelle vous essayez d'accéder est invalide ou vous n'avez pas les permissions nécessaires. Veuillez vérifier votre email pour une invitation valide ou contacter la personne qui vous l'a envoyée.",
+        "back_home": "Retourner à l'accueil"
+      }
+    },
+    "onboarding": {
+      "title": "Bienvenue sur Startup Template",
+      "description": "Créons votre organisation, à moins que vous n'attendiez une invitation ?"
+    },
+    "create": {
+      "title": "Créer une organisation",
+      "description": "À moins que vous n'attendiez une invitation ?",
+      "form": {
+        "name": {
+          "label": "Nom de l'organisation",
+          "placeholder": "Acme Inc.",
+          "required": "Le nom de l'organisation est requis"
+        },
+        "slug": {
+          "label": "Identifiant de l'organisation",
+          "placeholder": "acme",
+          "required": "L'identifiant de l'organisation est requis",
+          "format": "Seuls les lettres minuscules, les chiffres et les tirets sont autorisés"
+        },
+        "submit": "Créer",
+        "cancel": "Annuler"
+      }
+    }
+  },
+  "account": {
+    "settings": {
+      "title": "Paramètres du compte",
+      "description": "Gérez vos paramètres de compte ici.",
+      "form": {
+        "name": {
+          "label": "Nom",
+          "placeholder": "Votre nom"
+        },
+        "email": {
+          "label": "Email"
+        },
+        "submit": "Enregistrer les modifications",
+        "success": "Profil mis à jour avec succès",
+        "error": "Échec de la mise à jour du profil"
+      },
+      "locale": {
+        "title": "Préférences de langue",
+        "description": "Choisissez votre langue préférée pour l'interface."
+      }
+    },
+    "dashboard": {
+      "title": "Tableau de bord",
+      "welcome": "Bienvenue sur votre tableau de bord personnel !"
+    }
+  },
+  "app": {
+    "title": "Bienvenue sur Startup Template",
+    "description": "Startup Template"
+  },
+  "home": {
+    "title": "Template de démarrage pour votre prochaine startup",
+    "subtitle": "/ contiendrait une page d'accueil. Connectez-vous pour voir l'application",
+    "signed_in_as": "Connecté en tant que {email}",
+    "dashboard_link": "Tableau de bord",
+    "login_link": "Connexion"
+  },
+  "navigation": {
+    "account": {
+      "label": "Compte",
+      "dashboard": "Tableau de bord",
+      "settings": "Paramètres"
+    },
+    "organization": {
+      "label": "Organisation",
+      "dashboard": "Tableau de bord",
+      "members": "Membres",
+      "settings": "Paramètres"
+    },
+    "organization_switcher": {
+      "switch": "Changer d'organisation",
+      "organizations": "Organisations",
+      "create": "Créer une organisation"
+    },
+    "locale_switcher": {
+      "languages": {
+        "en": "English",
+        "fr": "Français"
+      }
+    }
   }
 }

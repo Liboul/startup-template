@@ -1,5 +1,200 @@
 {
   "auth": {
-    "logout": "Logout"
+    "logout": "Logout",
+    "login": {
+      "title": "Login",
+      "invitation": {
+        "title": "Join {organization} on Startup Template",
+        "description": "You have been invited by {email} to join {organization}."
+      }
+    },
+    "google": {
+      "connect": "Connect with Google"
+    },
+    "magic_link": {
+      "email": {
+        "invalid": "Email is not valid",
+        "label": "Enter your work email",
+        "placeholder": "Your email goes here"
+      },
+      "submit": "Submit",
+      "check_email": {
+        "title": "Check your email ({email})",
+        "description": "We've sent an authentication link to your email address. Click the link to sign in to your account.",
+        "help": "Didn't receive the email? Check your spam folder or try again"
+      }
+    }
+  },
+  "organization": {
+    "settings": {
+      "title": "Organization Settings",
+      "description": "Manage your organization settings here.",
+      "form": {
+        "name": {
+          "label": "Organization name",
+          "placeholder": "Acme Inc.",
+          "required": "Organization name is required"
+        },
+        "slug": {
+          "label": "Organization identifier",
+          "placeholder": "acme",
+          "required": "Organization identifier is required",
+          "format": "Only lowercase letters, numbers, and hyphens are allowed",
+          "taken": "Slug is already in use"
+        },
+        "submit": "Save changes",
+        "success": "Organization settings updated successfully",
+        "error": "Failed to update organization settings"
+      }
+    },
+    "dashboard": {
+      "title": "Organization Dashboard",
+      "welcome": "Welcome to your organization dashboard!"
+    },
+    "members": {
+      "title": "Organization Members",
+      "invitations": {
+        "title": "Pending Invitations",
+        "email": "Email",
+        "expires": "Expires",
+        "cancel": "Cancel",
+        "cancel_error": "Failed to cancel invitation",
+        "cancel_success": "Invitation cancelled",
+        "cancel_error_generic": "An error occurred while cancelling the invitation"
+      },
+      "invite": {
+        "title": "Invite teammates",
+        "description": "Invite your team members to collaborate. Enter their work emails to send invites."
+      },
+      "list": {
+        "title": "Members",
+        "user": "User",
+        "joined": "Joined"
+      },
+      "invite_form": {
+        "tip": "Tip: You can paste a comma-separated list or multiple lines of email addresses",
+        "email": {
+          "label": "Email address",
+          "placeholder": "member@example.com",
+          "invalid": "Please enter a valid email address"
+        },
+        "remove": "Remove",
+        "add": "Invite another member",
+        "submit": "Invite",
+        "cancel": "Cancel",
+        "error": {
+          "some_failed": "Failed to invite some members. Please try again.",
+          "generic": "An error occurred while sending invitations"
+        },
+        "success": "Invitations have been sent"
+      }
+    },
+    "accept_invitation": {
+      "title": "Organization Invitation",
+      "description": "You've been invited to join an organization",
+      "invited_by": "{email} has invited you to join {organization}",
+      "sent_to": "This invitation was sent to {email}",
+      "accepted": {
+        "title": "Welcome to {organization}!",
+        "description": "You've successfully joined the organization. We're excited to have you on board!"
+      },
+      "rejected": {
+        "title": "Invitation Declined",
+        "description": "You've declined the invitation to join {organization}"
+      },
+      "decline": "Decline",
+      "accept": "Accept Invitation",
+      "error": "An error occurred",
+      "error_page": {
+        "title": "Invitation Error",
+        "description": "There was an issue with your invitation.",
+        "message": "The invitation you're trying to access is either invalid or you don't have the correct permissions. Please check your email for a valid invitation or contact the person who sent it.",
+        "back_home": "Go back to home"
+      }
+    },
+    "onboarding": {
+      "title": "Welcome to Startup Template",
+      "description": "Let's create your organization, unless you are expecting an invitation?"
+    },
+    "create": {
+      "title": "Create Organization",
+      "description": "Unless you are expecting an invitation?",
+      "form": {
+        "name": {
+          "label": "Organization name",
+          "placeholder": "Acme Inc.",
+          "required": "Organization name is required"
+        },
+        "slug": {
+          "label": "Organization identifier",
+          "placeholder": "acme",
+          "required": "Organization identifier is required",
+          "format": "Only lowercase letters, numbers, and hyphens are allowed"
+        },
+        "submit": "Create",
+        "cancel": "Cancel"
+      }
+    }
+  },
+  "account": {
+    "settings": {
+      "title": "Account Settings",
+      "description": "Manage your account settings here.",
+      "form": {
+        "name": {
+          "label": "Name",
+          "placeholder": "Your name"
+        },
+        "email": {
+          "label": "Email"
+        },
+        "submit": "Save changes",
+        "success": "Profile updated successfully",
+        "error": "Failed to update profile"
+      },
+      "locale": {
+        "title": "Language Preferences",
+        "description": "Choose your preferred language for the interface."
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "welcome": "Welcome to your personal dashboard!"
+    }
+  },
+  "app": {
+    "title": "Welcome to Startup Template",
+    "description": "Startup Template"
+  },
+  "home": {
+    "title": "Starter template for your next startup",
+    "subtitle": "/ would contain a landing page. Login to see the app",
+    "signed_in_as": "Signed in as {email}",
+    "dashboard_link": "Dashboard",
+    "login_link": "Login"
+  },
+  "navigation": {
+    "account": {
+      "label": "Account",
+      "dashboard": "Dashboard",
+      "settings": "Settings"
+    },
+    "organization": {
+      "label": "Organization",
+      "dashboard": "Dashboard",
+      "members": "Members",
+      "settings": "Settings"
+    },
+    "organization_switcher": {
+      "switch": "Switch organization",
+      "organizations": "Organizations",
+      "create": "Create organization"
+    },
+    "locale_switcher": {
+      "languages": {
+        "en": "English",
+        "fr": "Français"
+      }
+    }
   }
 }

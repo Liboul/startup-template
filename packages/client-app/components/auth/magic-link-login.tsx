@@ -21,13 +21,16 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { useState } from 'react';
 import { MailIcon } from 'lucide-react';
-
-const formSchema = z.object({
-  email: z.string().email('Email is not valid'),
-});
+import { useTranslations } from 'next-intl';
 
 export function MagicLinkLogin({ callbackURL }: { callbackURL?: string }) {
+  const t = useTranslations('auth.magic_link');
   const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  const formSchema = z.object({
+    email: z.string().email(t('email.invalid')),
+  });
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: { email: '' },
@@ -43,15 +46,13 @@ export function MagicLinkLogin({ callbackURL }: { callbackURL?: string }) {
       <div className="space-y-4">
         <Alert>
           <MailIcon className="h-4 w-4" />
-          <AlertTitle>Check your email ({form.getValues().email})</AlertTitle>
+          <AlertTitle>{t('check_email.title', { email: form.getValues().email })}</AlertTitle>
           <AlertDescription className="text-muted-foreground">
-            {
-              "We've sent an authentication link to your email address. Click the link to sign in to your account."
-            }
+            {t('check_email.description')}
           </AlertDescription>
         </Alert>
         <div className="text-sm text-muted-foreground">
-          {"Didn't receive the email? Check your spam folder or try again"}
+          {t('check_email.help')}
         </div>
       </div>
     );
@@ -66,16 +67,16 @@ export function MagicLinkLogin({ callbackURL }: { callbackURL?: string }) {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Enter your work email</FormLabel>
+                <FormLabel>{t('email.label')}</FormLabel>
                 <div className="flex gap-2 items-center">
                   <FormControl className="flex gap-2 items-center">
                     <Input
                       autoFocus
-                      placeholder="Your email goes here"
+                      placeholder={t('email.placeholder')}
                       {...field}
                     />
                   </FormControl>
-                  <Button type="submit">Submit</Button>
+                  <Button type="submit">{t('submit')}</Button>
                 </div>
                 <FormMessage />
               </FormItem>

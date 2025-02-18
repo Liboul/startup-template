@@ -13,23 +13,11 @@ import {
   FormMessage,
 } from '@repo/ui/components/form';
 import { Input } from '@repo/ui/components/input';
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
-
-const updateOrgSchema = z.object({
-  name: z.string().min(1, 'Organization name is required'),
-  slug: z
-    .string()
-    .min(1, 'Organization identifier is required')
-    .regex(
-      /^[a-z0-9-]+$/,
-      'Only lowercase letters, numbers, and hyphens are allowed',
-    ),
-});
-
-type UpdateOrgFormData = z.infer<typeof updateOrgSchema>;
 
 interface OrganizationSettingsFormProps {
   organization: {
@@ -42,6 +30,21 @@ interface OrganizationSettingsFormProps {
 export function OrganizationSettingsForm({
   organization,
 }: OrganizationSettingsFormProps) {
+  const t = useTranslations('organization.settings.form');
+  
+  const updateOrgSchema = z.object({
+    name: z.string().min(1, t('name.required')),
+    slug: z
+      .string()
+      .min(1, t('slug.required'))
+      .regex(
+        /^[a-z0-9-]+$/,
+        t('slug.format'),
+      ),
+  });
+
+  type UpdateOrgFormData = z.infer<typeof updateOrgSchema>;
+
   const form = useForm<UpdateOrgFormData>({
     resolver: zodResolver(updateOrgSchema),
     defaultValues: {
@@ -65,14 +68,14 @@ export function OrganizationSettingsForm({
       // Slug must be unique
       if (error) {
         // For some reason there is a 500 when the slug is already in use, so we can't use the error message
-        form.setError('slug', { message: 'Slug is already in use' });
+        form.setError('slug', { message: t('slug.taken') });
         return;
       }
 
-      toast.success('Organization settings updated successfully');
+      toast.success(t('success'));
       router.refresh();
     } catch {
-      toast.error('Failed to update organization settings');
+      toast.error(t('error'));
     }
   }
 
@@ -86,9 +89,9 @@ export function OrganizationSettingsForm({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Organization name</FormLabel>
+                  <FormLabel>{t('name.label')}</FormLabel>
                   <FormControl>
-                    <Input placeholder="Acme Inc." {...field} />
+                    <Input placeholder={t('name.placeholder')} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -99,9 +102,9 @@ export function OrganizationSettingsForm({
               name="slug"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Organization identifier</FormLabel>
+                  <FormLabel>{t('slug.label')}</FormLabel>
                   <FormControl>
-                    <Input placeholder="acme" {...field} />
+                    <Input placeholder={t('slug.placeholder')} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -110,7 +113,7 @@ export function OrganizationSettingsForm({
           </CardContent>
           <CardFooter className="justify-end">
             <Button type="submit" size="lg" className="min-w-[160px]">
-              Save changes
+              {t('submit')}
             </Button>
           </CardFooter>
         </form>

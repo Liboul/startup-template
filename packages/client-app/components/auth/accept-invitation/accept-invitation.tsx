@@ -15,6 +15,7 @@ import { useRouter } from 'next/navigation';
 import { Skeleton } from '@repo/ui/components/skeleton';
 import { authClient } from '@/auth/client';
 import { InvitationError } from './invitation-error';
+import { useTranslations } from 'next-intl';
 
 interface AcceptInvitationProps {
   invitationId: string;
@@ -22,6 +23,7 @@ interface AcceptInvitationProps {
 
 export function AcceptInvitation({ invitationId }: AcceptInvitationProps) {
   const router = useRouter();
+  const t = useTranslations('organization.accept_invitation');
   const [invitationStatus, setInvitationStatus] = useState<
     'pending' | 'accepted' | 'rejected'
   >('pending');
@@ -33,7 +35,7 @@ export function AcceptInvitation({ invitationId }: AcceptInvitationProps) {
       })
       .then((res) => {
         if (res.error) {
-          setError(res.error.message || 'An error occurred');
+          setError(res.error.message || t('error'));
         } else {
           setInvitationStatus('accepted');
           router.push(`/org`);
@@ -48,7 +50,7 @@ export function AcceptInvitation({ invitationId }: AcceptInvitationProps) {
       })
       .then((res) => {
         if (res.error) {
-          setError(res.error.message || 'An error occurred');
+          setError(res.error.message || t('error'));
         } else {
           setInvitationStatus('rejected');
         }
@@ -79,12 +81,12 @@ export function AcceptInvitation({ invitationId }: AcceptInvitationProps) {
       })
       .then((res) => {
         if (res.error) {
-          setError(res.error.message || 'An error occurred');
+          setError(res.error.message || t('error'));
         } else {
           setInvitation(res.data);
         }
       });
-  }, [invitationId]);
+  }, [invitationId, t]);
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center">
@@ -92,21 +94,22 @@ export function AcceptInvitation({ invitationId }: AcceptInvitationProps) {
       {invitation ? (
         <Card className="w-full max-w-md">
           <CardHeader>
-            <CardTitle>Organization Invitation</CardTitle>
+            <CardTitle>{t('title')}</CardTitle>
             <CardDescription>
-              You&apos;ve been invited to join an organization
+              {t('description')}
             </CardDescription>
           </CardHeader>
           <CardContent>
             {invitationStatus === 'pending' && (
               <div className="space-y-4">
                 <p>
-                  <strong>{invitation?.inviterEmail}</strong> has invited you to
-                  join <strong>{invitation?.organizationName}</strong>.
+                  {t('invited_by', {
+                    email: invitation.inviterEmail,
+                    organization: invitation.organizationName
+                  })}
                 </p>
                 <p>
-                  This invitation was sent to{' '}
-                  <strong>{invitation?.email}</strong>.
+                  {t('sent_to', { email: invitation.email })}
                 </p>
               </div>
             )}
@@ -116,11 +119,10 @@ export function AcceptInvitation({ invitationId }: AcceptInvitationProps) {
                   <CheckIcon className="w-8 h-8 text-green-600" />
                 </div>
                 <h2 className="text-2xl font-bold text-center">
-                  Welcome to {invitation?.organizationName}!
+                  {t('accepted.title', { organization: invitation.organizationName })}
                 </h2>
                 <p className="text-center">
-                  You&apos;ve successfully joined the organization. We&apos;re
-                  excited to have you on board!
+                  {t('accepted.description')}
                 </p>
               </div>
             )}
@@ -130,11 +132,10 @@ export function AcceptInvitation({ invitationId }: AcceptInvitationProps) {
                   <XIcon className="w-8 h-8 text-red-600" />
                 </div>
                 <h2 className="text-2xl font-bold text-center">
-                  Invitation Declined
+                  {t('rejected.title')}
                 </h2>
                 <p className="text-center">
-                  You&apos;ve declined the invitation to join{' '}
-                  {invitation?.organizationName}.
+                  {t('rejected.description', { organization: invitation.organizationName })}
                 </p>
               </div>
             )}
@@ -142,9 +143,9 @@ export function AcceptInvitation({ invitationId }: AcceptInvitationProps) {
           {invitationStatus === 'pending' && (
             <CardFooter className="flex justify-between">
               <Button variant="outline" onClick={handleReject}>
-                Decline
+                {t('decline')}
               </Button>
-              <Button onClick={handleAccept}>Accept Invitation</Button>
+              <Button onClick={handleAccept}>{t('accept')}</Button>
             </CardFooter>
           )}
         </Card>

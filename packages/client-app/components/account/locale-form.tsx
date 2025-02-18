@@ -8,14 +8,17 @@ import {
   CardTitle,
 } from '@repo/ui/components/card';
 import { LocaleSwitcher } from '@/components/navigation/locale-switcher';
+import { useTranslations } from 'next-intl';
 
 export function LocaleForm() {
+  const t = useTranslations('account.settings.locale');
+
   return (
     <Card className="min-w-[400px]">
       <CardHeader>
-        <CardTitle>Language Preferences</CardTitle>
+        <CardTitle>{t('title')}</CardTitle>
         <CardDescription>
-          Choose your preferred language for the interface.
+          {t('description')}
         </CardDescription>
       </CardHeader>
       <CardContent>

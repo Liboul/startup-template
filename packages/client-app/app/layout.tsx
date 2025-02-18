@@ -4,7 +4,7 @@ import { Toaster } from '@repo/ui/components/sonner';
 import '@repo/ui/styles/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { NextIntlClientProvider } from 'next-intl';
-import { getLocale, getMessages } from 'next-intl/server';
+import { getLocale, getMessages, getTranslations } from 'next-intl/server';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({
@@ -13,10 +13,13 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-export const metadata = {
-  title: 'Welcome to Startup Template',
-  description: 'Startup Template',
-};
+export async function generateMetadata() {
+  const t = await getTranslations('app');
+  return {
+    title: t('title'),
+    description: t('description'),
+  };
+}
 
 export default async function RootLayout({
   children,

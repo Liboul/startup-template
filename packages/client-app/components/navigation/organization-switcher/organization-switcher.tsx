@@ -16,9 +16,11 @@ import {
 } from '@repo/ui/components/sidebar';
 import { CreateOrganizationMenuItem } from './create-organization-menu-item';
 import { OrganizationMenuItems } from './organization-menu-items';
+import { getTranslations } from 'next-intl/server';
 
 export async function OrganizationSwitcher() {
   const activeOrganization = await api.organization.getActive();
+  const t = await getTranslations('navigation.organization_switcher');
 
   return (
     <SidebarMenu>
@@ -32,7 +34,7 @@ export async function OrganizationSwitcher() {
               <Logo size="sm" />
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">
-                  {activeOrganization?.name || 'Switch organization'}
+                  {activeOrganization?.name || t('switch')}
                 </span>
               </div>
               <ChevronsUpDown className="ml-auto" />
@@ -45,7 +47,7 @@ export async function OrganizationSwitcher() {
             sideOffset={4}
           >
             <DropdownMenuLabel className="text-xs text-muted-foreground">
-              Organizations
+              {t('organizations')}
             </DropdownMenuLabel>
             <OrganizationMenuItems activeOrganization={activeOrganization} />
             <DropdownMenuSeparator />

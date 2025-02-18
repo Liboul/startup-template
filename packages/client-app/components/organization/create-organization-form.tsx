@@ -14,22 +14,10 @@ import {
 } from '@repo/ui/components/form';
 import { Input } from '@repo/ui/components/input';
 import { AlertCircle } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-
-const createOrgSchema = z.object({
-  name: z.string().min(1, 'Organization name is required'),
-  slug: z
-    .string()
-    .min(1, 'Organization identifier is required')
-    .regex(
-      /^[a-z0-9-]+$/,
-      'Only lowercase letters, numbers, and hyphens are allowed',
-    ),
-});
-
-export type CreateOrgFormData = z.infer<typeof createOrgSchema>;
 
 export interface CreateOrganizationFormProps {
   onSuccess?: () => void;
@@ -40,6 +28,21 @@ export function CreateOrganizationForm({
   onSuccess,
   onCancel,
 }: CreateOrganizationFormProps) {
+  const t = useTranslations('organization.create.form');
+  
+  const createOrgSchema = z.object({
+    name: z.string().min(1, t('name.required')),
+    slug: z
+      .string()
+      .min(1, t('slug.required'))
+      .regex(
+        /^[a-z0-9-]+$/,
+        t('slug.format'),
+      ),
+  });
+
+  type CreateOrgFormData = z.infer<typeof createOrgSchema>;
+
   const router = useRouter();
   const form = useForm<CreateOrgFormData>({
     resolver: zodResolver(createOrgSchema),
@@ -85,9 +88,9 @@ export function CreateOrganizationForm({
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Organization name</FormLabel>
+              <FormLabel>{t('name.label')}</FormLabel>
               <FormControl>
-                <Input placeholder="Acme Inc." {...field} />
+                <Input placeholder={t('name.placeholder')} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -98,9 +101,9 @@ export function CreateOrganizationForm({
           name="slug"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Organization identifier</FormLabel>
+              <FormLabel>{t('slug.label')}</FormLabel>
               <FormControl>
-                <Input placeholder="acme" {...field} />
+                <Input placeholder={t('slug.placeholder')} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -109,10 +112,10 @@ export function CreateOrganizationForm({
         <div className="flex justify-end space-x-2">
           {onCancel && (
             <Button type="button" variant="outline" onClick={onCancel}>
-              Cancel
+              {t('cancel')}
             </Button>
           )}
-          <Button type="submit">Create</Button>
+          <Button type="submit">{t('submit')}</Button>
         </div>
       </form>
     </Form>

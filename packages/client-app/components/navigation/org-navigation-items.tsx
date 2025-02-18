@@ -8,23 +8,25 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@repo/ui/components/sidebar';
+import { useTranslations } from 'next-intl';
 
 export function OrgNavigationItems() {
   const pathname = usePathname();
+  const t = useTranslations('navigation.organization');
 
   const sidebarNavItems = [
     {
-      title: 'Dashboard',
+      title: t('dashboard'),
       href: `/org/dashboard`,
       icon: LayoutDashboard,
     },
     {
-      title: 'Members',
+      title: t('members'),
       href: `/org/members`,
       icon: Users,
     },
     {
-      title: 'Settings',
+      title: t('settings'),
       href: `/org/settings`,
       icon: Settings,
     },

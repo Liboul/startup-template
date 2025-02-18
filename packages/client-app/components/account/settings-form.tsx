@@ -11,6 +11,7 @@ import { Input } from '@repo/ui/components/input';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { User } from 'better-auth';
+import { useTranslations } from 'next-intl';
 
 interface AccountSettingsFormProps {
   user: User;
@@ -18,15 +19,16 @@ interface AccountSettingsFormProps {
 
 export function AccountSettingsForm({ user }: AccountSettingsFormProps) {
   const [name, setName] = useState(user.name);
+  const t = useTranslations('account.settings.form');
 
   const handleSave = async () => {
     try {
       await authClient.updateUser({
         name,
       });
-      toast.success('Profile updated successfully');
+      toast.success(t('success'));
     } catch {
-      toast.error('Failed to update profile');
+      toast.error(t('error'));
     }
   };
 
@@ -38,14 +40,14 @@ export function AccountSettingsForm({ user }: AccountSettingsFormProps) {
             htmlFor="name"
             className="text-sm font-medium leading-none mb-2 block"
           >
-            Name
+            {t('name.label')}
           </label>
           <Input
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="max-w-xl"
-            placeholder="Your name"
+            placeholder={t('name.placeholder')}
           />
         </div>
 
@@ -54,7 +56,7 @@ export function AccountSettingsForm({ user }: AccountSettingsFormProps) {
             htmlFor="email"
             className="text-sm font-medium leading-none mb-2 block"
           >
-            Email
+            {t('email.label')}
           </label>
           <Input
             id="email"
@@ -66,7 +68,7 @@ export function AccountSettingsForm({ user }: AccountSettingsFormProps) {
       </CardContent>
       <CardFooter className="justify-end">
         <Button onClick={handleSave} size="lg" className="min-w-[160px]">
-          Save changes
+          {t('submit')}
         </Button>
       </CardFooter>
     </Card>

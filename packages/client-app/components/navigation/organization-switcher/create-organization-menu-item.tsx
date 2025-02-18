@@ -4,8 +4,11 @@ import { Plus } from 'lucide-react';
 import { DialogTrigger } from '@repo/ui/components/dialog';
 import { DropdownMenuItem } from '@repo/ui/components/dropdown-menu';
 import { CreateOrganizationDialog } from '@/components/organization/create-organization-dialog';
+import { useTranslations } from 'next-intl';
 
 export function CreateOrganizationMenuItem() {
+  const t = useTranslations('navigation.organization_switcher');
+  
   return (
     <CreateOrganizationDialog
       trigger={
@@ -21,7 +24,7 @@ export function CreateOrganizationMenuItem() {
               <Plus className="size-4" />
             </div>
             <div className="font-medium text-muted-foreground">
-              Create organization
+              {t('create')}
             </div>
           </DropdownMenuItem>
         </DialogTrigger>

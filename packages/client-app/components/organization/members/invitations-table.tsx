@@ -16,6 +16,7 @@ import {
   TableRow,
 } from '@repo/ui/components/table';
 import { MoreHorizontal } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 
 interface InvitationsTableProps {
@@ -23,6 +24,8 @@ interface InvitationsTableProps {
 }
 
 export function InvitationsTable({ invitations }: InvitationsTableProps) {
+  const t = useTranslations('organization.members.invitations');
+
   const handleCancel = async (invitationId: string) => {
     try {
       const result = await authClient.organization.cancelInvitation({
@@ -30,24 +33,24 @@ export function InvitationsTable({ invitations }: InvitationsTableProps) {
       });
 
       if (result.error) {
-        toast.error('Failed to cancel invitation');
+        toast.error(t('cancel_error'));
         return;
       }
 
-      toast.success('Invitation cancelled');
+      toast.success(t('cancel_success'));
     } catch {
-      toast.error('An error occurred while cancelling the invitation');
+      toast.error(t('cancel_error_generic'));
     }
   };
 
   return (
     <div>
-      <h2 className="text-lg font-semibold mb-4">Pending Invitations</h2>
+      <h2 className="text-lg font-semibold mb-4">{t('title')}</h2>
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Email</TableHead>
-            <TableHead>Expires</TableHead>
+            <TableHead>{t('email')}</TableHead>
+            <TableHead>{t('expires')}</TableHead>
             <TableHead />
           </TableRow>
         </TableHeader>
@@ -69,7 +72,7 @@ export function InvitationsTable({ invitations }: InvitationsTableProps) {
                     <DropdownMenuItem
                       onClick={() => handleCancel(invitation.id)}
                     >
-                      Cancel
+                      {t('cancel')}
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>

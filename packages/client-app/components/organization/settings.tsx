@@ -7,7 +7,6 @@ import { OrganizationSettingsForm } from './settings-form';
 export function OrganizationSettings() {
   const { data: activeOrganization, isPending } =
     authClient.useActiveOrganization();
-  console.log({ activeOrganization, isPending });
 
   if (isPending || !activeOrganization) {
     return <Loader2 className="animate-spin h-4 w-4" />;
