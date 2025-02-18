@@ -382,3 +382,23 @@ import { useToast } from "@izno/ui/hooks/use-toast";
 
 const toast = useToast();
 ```
+
+###
+
+Never hard-code texts, always go through next-intl
+
+```tsx
+// ✅ DO: Use next-intl
+import { useTranslations } from "next-intl";
+
+function MyComponent() {
+  const t = useTranslations("some.namespace");
+  return <div>t('some.key')</div>;
+}
+
+// ❌ DON'T: hard-code text
+
+function MyComponent() {
+  return <div>Some Text</div>;
+}
+```
