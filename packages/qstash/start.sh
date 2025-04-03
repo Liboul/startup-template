@@ -8,8 +8,6 @@ source .env
 QSTASH_CONTAINER_NAME="startup-template-qstash"
 QSTASH_PORT=$(echo "$QSTASH_URL" | awk -F':' '{print $3}')
 
-echo $QSTASH_PORT
-
 if ! [ -x "$(command -v docker)" ]; then
   echo -e "Docker is not installed. Please install docker and try again.\nDocker install guide: https://docs.docker.com/engine/install/"
   exit 1

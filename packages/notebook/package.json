@@ -12,8 +12,5 @@
       "default": "./index.ts"
     },
     "./package.json": "./package.json"
-  },
-  "dependencies": {
-    "@repo/redis": "*"
   }
 }
