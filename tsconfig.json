@@ -35,6 +35,9 @@
     },
     {
       "path": "./packages/redis"
+    },
+    {
+      "path": "./packages/qstash"
     }
   ]
 }

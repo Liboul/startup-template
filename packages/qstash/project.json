@@ -1,0 +1,16 @@
+{
+  "name": "@repo/qstash",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/qstash",
+  "projectType": "library",
+  "targets": {
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "./packages/qstash/start.sh",
+        "parallel": false
+      }
+    }
+  },
+  "tags": []
+}
