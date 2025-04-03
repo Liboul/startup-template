@@ -1,9 +1,7 @@
-// export async function GET(request: Request) {
-//   return new Response('Hello, from API!');
-// }
+import { verifySignatureAppRouter } from '@upstash/qstash/nextjs';
 
-import { defineServerlessFunction } from '@repo/serverless-function';
-
-export const POST = defineServerlessFunction(async () => {
-  console.log('Hello, from serverless function!');
+export const POST = verifySignatureAppRouter(async (request: Request) => {
+  const data = await request.json();
+  console.log('Executing serverless function:', data);
+  return new Response('ok');
 });

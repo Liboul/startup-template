@@ -1,29 +1,19 @@
-import { betterFetch, type BetterFetchOption } from '@better-fetch/fetch';
-import {
-  SERVERLESS_FUNCTION_API_KEY_HEADER_NAME,
-  getSecretApiKey,
-} from './header';
-import { Route } from 'next';
+import { qstash } from '@repo/qstash';
 
-export function callServerlessFunction(
-  url: Route,
-  options: BetterFetchOption = {},
-) {
-  const headers = {
-    [SERVERLESS_FUNCTION_API_KEY_HEADER_NAME]: getSecretApiKey(),
-    ...options.headers,
-  };
-
-  return betterFetch(`${getBaseUrl()}${url}`, {
-    ...options,
-    method: 'POST',
-    headers,
-  });
+if (!process.env.BASE_URL) {
+  throw new Error('BASE_URL is not set');
 }
 
-const getBaseUrl = () => {
-  if (!process.env.BASE_URL) {
-    throw new Error('BASE_URL is not set');
-  }
-  return process.env.BASE_URL;
-};
+const QSTASH_BASE_URL = process.env.BASE_URL.startsWith('http://localhost')
+  ? process.env.BASE_URL.replace(
+      'http://localhost',
+      'http://host.docker.internal',
+    )
+  : process.env.BASE_URL;
+
+export function callServerlessFunction(path: string, message?: unknown) {
+  return qstash.publishJSON({
+    url: `${QSTASH_BASE_URL}/${path}`,
+    body: message,
+  });
+}

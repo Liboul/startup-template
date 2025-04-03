@@ -1,7 +1,9 @@
 # serverless-function
 
-Helpers to define and call serverless functions.
+Helper to call serverless functions through qstash.
+
 These serverless functions:
+
 - Are deployed on Vercel
 - Live inside a nextjs app
-- Are authenticated with a shared API key between the caller and the function
+- Are called by upstash qstash

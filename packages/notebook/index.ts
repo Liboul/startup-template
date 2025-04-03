@@ -1,9 +1,8 @@
-import { db } from '@repo/db';
 import { createCaller, createTRPCContext } from '@repo/api';
+import { db } from '@repo/db';
 import { exampleFunctionFromLib } from '@repo/example-lib';
-import { callServerlessFunction } from '@repo/serverless-function';
 import { redis } from '@repo/redis';
-import { qstash } from '@repo/qstash';
+import { callServerlessFunction } from '@repo/serverless-function';
 
 async function testFunctionFromLib() {
   console.log(exampleFunctionFromLib());
@@ -35,15 +34,6 @@ async function testTrpcCalls() {
   );
 }
 
-async function testServerlessFunction() {
-  console.log('Make sure to run nx dev client-app to test serverless function');
-  const response = await callServerlessFunction(
-    '/api/example-serverless-function',
-  );
-  console.log(`Serverless function: ${JSON.stringify(response, null, 2)}`);
-  console.log('Check out the server logs to make sure the function was called');
-}
-
 async function testRedis() {
   console.log('Testing Redis operations...');
 
@@ -60,15 +50,16 @@ async function testRedis() {
   console.log('Cleaned up test key');
 }
 
-async function testQStash() {
-  console.log('Testing QStash operations...');
+async function testServerlessFunction() {
+  console.log('Testing Serverless Function...');
 
-  // Test immediate message publishing
   console.log('Publishing immediate message...');
-  const immediateResult = await qstash.publishJSON({
-    url: 'http://host.docker.internal:3000/api/qstash-test',
-    body: { message: 'Hello from QStash!' },
-  });
+  const immediateResult = await callServerlessFunction(
+    'api/example-serverless-function',
+    {
+      message: 'Hello from the notebook!',
+    },
+  );
   console.log('Message published:', immediateResult);
   console.log('Waiting for message to be processed...');
   // Wait for the message to be processed
@@ -82,7 +73,6 @@ async function main() {
   await testTrpcCalls();
   await testServerlessFunction();
   await testRedis();
-  await testQStash();
 }
 
 main();
