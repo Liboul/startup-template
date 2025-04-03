@@ -11,6 +11,7 @@ Company codebase boilerplate using:
 - shad-cn for the design system, lucide for icons
 - tRPC for the API
 - Postgres for the DB
+- Redis for the in-memory DB
 - Prisma for schema management and DB client
 - BetterAuth for authentication with individual accounts and organizations
 - Postmark for sending emails

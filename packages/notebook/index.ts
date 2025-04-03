@@ -2,6 +2,8 @@ import { db } from '@repo/db';
 import { createCaller, createTRPCContext } from '@repo/api';
 import { exampleFunctionFromLib } from '@repo/example-lib';
 import { callServerlessFunction } from '@repo/serverless-function';
+import { redis } from '@repo/redis';
+
 async function testFunctionFromLib() {
   console.log(exampleFunctionFromLib());
 }
@@ -33,9 +35,7 @@ async function testTrpcCalls() {
 }
 
 async function testServerlessFunction() {
-  console.log(
-    'Make sure to run nx dev client-app to test serverless function',
-  );
+  console.log('Make sure to run nx dev client-app to test serverless function');
   const response = await callServerlessFunction(
     '/api/example-serverless-function',
   );
@@ -43,11 +43,28 @@ async function testServerlessFunction() {
   console.log('Check out the server logs to make sure the function was called');
 }
 
+async function testRedis() {
+  console.log('Testing Redis operations...');
+
+  // Test setting a value
+  await redis.set('test-key', 'Hello from Redis!');
+  console.log('Set value in Redis');
+
+  // Test getting a value
+  const value = await redis.get('test-key');
+  console.log(`Retrieved value from Redis: ${value}`);
+
+  // Clean up
+  await redis.del('test-key');
+  console.log('Cleaned up test key');
+}
+
 async function main() {
   await testFunctionFromLib();
   await testDbCall();
   await testTrpcCalls();
   await testServerlessFunction();
+  await testRedis();
 }
 
 main();

@@ -4,16 +4,19 @@
   "include": [],
   "references": [
     {
+      "path": "../redis"
+    },
+    {
       "path": "../serverless-function"
+    },
+    {
+      "path": "../example-lib"
     },
     {
       "path": "../api"
     },
     {
       "path": "../db"
-    },
-    {
-      "path": "../example-lib"
     },
     {
       "path": "./tsconfig.lib.json"

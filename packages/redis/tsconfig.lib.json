@@ -10,21 +10,5 @@
     "types": ["node"]
   },
   "include": ["**/*.ts"],
-  "references": [
-    {
-      "path": "../redis/tsconfig.lib.json"
-    },
-    {
-      "path": "../serverless-function/tsconfig.lib.json"
-    },
-    {
-      "path": "../example-lib/tsconfig.lib.json"
-    },
-    {
-      "path": "../api/tsconfig.lib.json"
-    },
-    {
-      "path": "../db/tsconfig.lib.json"
-    }
-  ]
+  "references": []
 }

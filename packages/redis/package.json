@@ -1,5 +1,5 @@
 {
-  "name": "@repo/notebook",
+  "name": "@repo/redis",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -13,7 +13,5 @@
     },
     "./package.json": "./package.json"
   },
-  "dependencies": {
-    "@repo/redis": "*"
-  }
+  "dependencies": {}
 }

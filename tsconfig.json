@@ -32,6 +32,9 @@
     },
     {
       "path": "./packages/serverless-function"
+    },
+    {
+      "path": "./packages/redis"
     }
   ]
 }
