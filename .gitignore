@@ -54,3 +54,6 @@ test-output
 # Data
 data/postgres/*
 .vercel
+
+vite.config.*.timestamp*
+vitest.config.*.timestamp*
