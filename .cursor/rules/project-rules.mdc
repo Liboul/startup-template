@@ -44,6 +44,15 @@ cd packages/client-app && npm install react-markdown
 - `data-access`: Database access layer
 - `client-app`: Frontend application for clients
 
+## Testing
+
+### Setup an existing typescript project
+
+To setup an existing NX typescript package with testing, do the following:
+- `nx g @nx/vite:configuration --project @repo/the-package` and pick React as the framework if relevant
+- `nx g @nx/vite:vitest --project @repo/the-package`
+- Make sure the vitest configuration matches the package, especially the include option (remove `src`, and update `entry` if relevant for our package)
+
 ## Code Standards
 
 ### Type Safety
@@ -383,7 +392,7 @@ import { useToast } from "@izno/ui/hooks/use-toast";
 const toast = useToast();
 ```
 
-###
+### Translations
 
 Never hard-code texts, always go through next-intl
 
