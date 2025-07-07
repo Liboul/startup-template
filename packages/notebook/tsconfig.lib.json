@@ -12,22 +12,22 @@
   "include": ["**/*.ts"],
   "references": [
     {
-      "path": "../qstash/tsconfig.lib.json"
+      "path": "../serverless-function/tsconfig.lib.json"
     },
     {
       "path": "../redis/tsconfig.lib.json"
     },
     {
-      "path": "../serverless-function/tsconfig.lib.json"
-    },
-    {
       "path": "../example-lib/tsconfig.lib.json"
     },
     {
-      "path": "../api/tsconfig.lib.json"
+      "path": "../search/tsconfig.lib.json"
     },
     {
       "path": "../db/tsconfig.lib.json"
+    },
+    {
+      "path": "../api/tsconfig.lib.json"
     }
   ]
 }

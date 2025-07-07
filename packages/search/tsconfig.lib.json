@@ -9,10 +9,6 @@
     "forceConsistentCasingInFileNames": true,
     "types": ["node"]
   },
-  "include": ["**/*.ts"],
-  "references": [
-    {
-      "path": "../qstash/tsconfig.lib.json"
-    }
-  ]
+  "include": ["./**/*.ts"],
+  "references": []
 }

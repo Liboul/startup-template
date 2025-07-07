@@ -1,5 +1,6 @@
 import { createCaller, createTRPCContext } from '@repo/api';
 import { db } from '@repo/db';
+import { search } from '@repo/search';
 import { exampleFunctionFromLib } from '@repo/example-lib';
 import { redis } from '@repo/redis';
 import { callServerlessFunction } from '@repo/serverless-function';
@@ -67,12 +68,19 @@ async function testServerlessFunction() {
   console.log('Message should have been processed, check the server logs!');
 }
 
+async function testSearch() {
+  console.log('Testing Search...');
+  const stats = await search.indices.stats();
+  console.log('Search stats:', stats);
+}
+
 async function main() {
   await testFunctionFromLib();
   await testDbCall();
   await testTrpcCalls();
   await testServerlessFunction();
   await testRedis();
+  await testSearch();
 }
 
 main();

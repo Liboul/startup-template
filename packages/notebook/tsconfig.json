@@ -4,22 +4,22 @@
   "include": [],
   "references": [
     {
-      "path": "../qstash"
+      "path": "../serverless-function"
     },
     {
       "path": "../redis"
     },
     {
-      "path": "../serverless-function"
-    },
-    {
       "path": "../example-lib"
     },
     {
-      "path": "../api"
+      "path": "../search"
     },
     {
       "path": "../db"
+    },
+    {
+      "path": "../api"
     },
     {
       "path": "./tsconfig.lib.json"

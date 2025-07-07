@@ -49,9 +49,6 @@
       "path": "../api"
     },
     {
-      "path": "../serverless-function"
-    },
-    {
       "path": "../auth"
     },
     {
