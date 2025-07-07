@@ -9,7 +9,21 @@
       "options": {
         "command": "npx tsx packages/notebook/index.ts",
         "parallel": false
-      }
+      },
+      "dependsOn": [
+        {
+          "target": "start",
+          "projects": ["qstash"]
+        },
+        {
+          "target": "start",
+          "projects": ["db"]
+        },
+        {
+          "target": "start",
+          "projects": ["search"]
+        }
+      ]
     }
   },
   "tags": []
