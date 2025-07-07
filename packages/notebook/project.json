@@ -24,6 +24,12 @@
           "projects": ["search"]
         }
       ]
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx nx run notebook:index --configuration test"
+      }
     }
   },
   "tags": []
