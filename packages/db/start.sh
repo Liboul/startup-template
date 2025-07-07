@@ -3,7 +3,6 @@
 
 # import env variables from .env
 set -a
-source .env
 
 # Example
 # DATABASE_URL="postgresql://postgres:password@localhost:5432/startup-template"

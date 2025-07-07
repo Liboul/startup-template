@@ -3,7 +3,6 @@
 
 # import env variables from .env
 set -a
-source .env
 
 QSTASH_CONTAINER_NAME="startup-template-qstash"
 QSTASH_PORT=$(echo "$QSTASH_URL" | awk -F':' '{print $3}')
