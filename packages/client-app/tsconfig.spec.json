@@ -1,12 +1,20 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/jest",
-    "jsx": "preserve",
-    "types": ["jest", "node"]
+    "outDir": "./out-tsc/vitest",
+    "types": [
+      "vitest/globals",
+      "vitest/importMeta",
+      "vite/client",
+      "node",
+      "vitest"
+    ],
   },
   "include": [
-    "jest.config.ts",
+    "vite.config.ts",
+    "vite.config.mts",
+    "vitest.config.ts",
+    "vitest.config.mts",
     "**/*.test.ts",
     "**/*.spec.ts",
     "**/*.test.tsx",
@@ -16,10 +24,5 @@
     "**/*.test.jsx",
     "**/*.spec.jsx",
     "**/*.d.ts"
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.json"
-    }
   ]
 }

@@ -38,8 +38,8 @@
     "dist",
     "node_modules",
     "jest.config.ts",
-    "app/**/*.spec.ts",
-    "app/**/*.test.ts",
+    "**/*.spec.ts",
+    "**/*.test.ts",
     "eslint.config.js",
     "eslint.config.cjs",
     "eslint.config.mjs"
